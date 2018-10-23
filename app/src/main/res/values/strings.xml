@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Excent</string>
+    <string name="launch_action_not_supported">Action not currently supported</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- LOGIN -->
+    <string name="connection_error">Error al realizar la conexión</string>
+    <string name="generic_request_error">Ah sucedido un error inesperado</string>
+    <string name="user_invalid">Usuario y/o contraseña son incorrectos</string>
+    <string name="complete_fields_login">Agregue su usuario y/o contraseña</string>
+
+</resources>
