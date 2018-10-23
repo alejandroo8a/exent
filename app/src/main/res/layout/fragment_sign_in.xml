@@ -138,18 +138,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="116dp"
         android:clickable="true"
         android:elevation="4dp"
         android:rotation="180"
         android:src="@drawable/ic_arrow"
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
         android:id="@+id/btn_register"
@@ -157,15 +157,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/btn_login"
         android:text="Registrarse"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fab_login" />
+        app:layout_constraintTop_toBottomOf="@+id/fab_login"
+        app:layout_constraintVertical_bias="0.73" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="389dp" />
 
 
 </android.support.constraint.ConstraintLayout>
