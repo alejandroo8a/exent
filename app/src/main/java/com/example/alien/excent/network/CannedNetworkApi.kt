@@ -2,6 +2,8 @@ package com.example.alien.excent.network
 
 import android.content.Context
 import android.os.Environment
+import com.example.alien.excent.ModelsApiClient.RegisterRequest
+import com.example.alien.excent.ModelsApiClient.RegisterResponse
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
 import com.squareup.moshi.JsonAdapter
@@ -25,9 +27,22 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
     override fun submitSignIn(signInRequest: SignInRequest): Single<SignInResponse> {
         return when (signInRequest.user) {
             "success" -> readFileForSingle("cannedData/SignInResponse.json", SignInResponse::class.java)
-            "error" -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
+            "unauthorized" -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
+            "forbidden" -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
+            "notFound" -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
             "connection" -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
-            else -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
+            else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
+        }
+    }
+
+    override fun submitSignUp(signUpRequest: RegisterRequest): Single<RegisterResponse> {
+        return when (signUpRequest.user) {
+            "success" -> readFileForSingle("cannedData/SignUpResponse.json", RegisterResponse::class.java)
+            "unauthorized" -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
+            "forbidden" -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
+            "notFound" -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
+            "connection" -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
+            else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
         }
     }
 

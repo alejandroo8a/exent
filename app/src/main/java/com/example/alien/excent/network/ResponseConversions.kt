@@ -8,13 +8,12 @@ import java.io.InterruptedIOException
 import java.net.SocketException
 import java.net.UnknownHostException
 
-
 class ResponseConversions @Inject
 internal constructor() {
-    val HTTP_REQUEST_TIMEOUT = 408
-    val HTTP_UNAUTHORIZED = 401
-    val HTTP_FORBIDDEN = 403
-    val HTTP_NOT_FOUND = 404
+    private val HTTP_REQUEST_TIMEOUT = 408
+    private val HTTP_UNAUTHORIZED = 401
+    private val HTTP_FORBIDDEN = 403
+    private val HTTP_NOT_FOUND = 404
 
     private fun isConnectionException(throwable: Throwable): Boolean {
         return (throwable is HttpException && isConnectionException(throwable as HttpException)
@@ -24,19 +23,19 @@ internal constructor() {
     }
 
     private fun isConnectionException(httpException: HttpException): Boolean {
-        return httpException.code() === HTTP_REQUEST_TIMEOUT
+        return httpException.code() == HTTP_REQUEST_TIMEOUT
     }
 
     private fun isAuthorizationException(throwable: Throwable): Boolean {
-        return throwable is HttpException && (throwable as HttpException).code() === HTTP_UNAUTHORIZED
+        return throwable is HttpException && (throwable as HttpException).code() == HTTP_UNAUTHORIZED
     }
 
     private fun isForbiddenException(throwable: Throwable): Boolean {
-        return throwable is HttpException && (throwable as HttpException).code() === HTTP_FORBIDDEN
+        return throwable is HttpException && (throwable as HttpException).code() == HTTP_FORBIDDEN
     }
 
     private fun isNotFoundException(throwable: Throwable): Boolean {
-        return throwable is HttpException && (throwable as HttpException).code() === HTTP_NOT_FOUND
+        return throwable is HttpException && (throwable as HttpException).code() == HTTP_NOT_FOUND
     }
 
     fun toNetworkResult(throwable: Throwable): NetworkResult {

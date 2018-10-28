@@ -1,5 +1,7 @@
 package com.example.alien.excent.network.login
 
+import com.example.alien.excent.ModelsApiClient.RegisterRequest
+import com.example.alien.excent.ModelsApiClient.RegisterResponse
 import com.example.alien.excent.network.NetworkApi
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
@@ -11,5 +13,9 @@ internal constructor(private val api: NetworkApi){
 
     fun submitSignIn(user: String, password: String): Single<SignInResponse> {
         return api.submitSignIn(SignInRequest(user, password))
+    }
+
+    fun submitSignUp(user: String, email: String, password: String): Single<RegisterResponse> {
+        return api.submitSignUp(RegisterRequest(user, password, email))
     }
 }

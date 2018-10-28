@@ -9,6 +9,14 @@
     <string name="connection_error">Error al realizar la conexión</string>
     <string name="generic_request_error">Ah sucedido un error inesperado</string>
     <string name="user_invalid">Usuario y/o contraseña son incorrectos</string>
+    <string name="forbidden">Sin autorización</string>
     <string name="complete_fields_login">Agregue su usuario y/o contraseña</string>
+
+    <!-- FORM HELPER -->
+    <string name="field_is_required">El campo de %s es requerido</string>
+    <string name="field_requires_fewer_chars">El campo %s es demasiado corto</string>
+    <string name="field_error_invalid_email">El email no tiene el formato correcto</string>
+    <string name="field_error_password_incorrect_format">La contraseña debe de contener una mayuscula, un número y minimo 8 caractéres </string>
+    <string name="field_error_non_matching_password">Las contraseñas no coinciden </string>
 
 </resources>

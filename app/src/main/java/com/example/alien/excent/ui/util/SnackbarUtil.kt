@@ -13,6 +13,7 @@ class SnackbarUtil @Inject
 internal constructor() {
 
     private val defaultDurationSnackbar = Snackbar.LENGTH_SHORT
+    private val longDurationSnackbar = Snackbar.LENGTH_LONG
 
     fun showSnackbar(view: View, error: HttpException) {
         showSnackbar(view, error.message!!)
@@ -28,6 +29,10 @@ internal constructor() {
 
     fun showSnackbar(view: View, message: String) {
         showSnackbar(view, message, defaultDurationSnackbar)
+    }
+
+    fun showLongSnackbar(view: View, message: String) {
+        showSnackbar(view, message, longDurationSnackbar)
     }
 
     private fun showSnackbar(view: View?, stringResourceId: Int, duration: Int) {

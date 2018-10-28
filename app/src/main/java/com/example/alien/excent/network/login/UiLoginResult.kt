@@ -1,6 +1,6 @@
-package com.example.alien.excent.data.login.signin
+package com.example.alien.excent.network.login
 
-enum class SignInType {
+enum class UiLoginResult {
     SUCCESS,
     INVALID_CREDENTIALS,
     FORBIDDEN_ERROR,

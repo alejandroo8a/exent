@@ -1,6 +1,6 @@
 package com.example.alien.excent.data.login
 
-import com.example.alien.excent.data.login.signin.LoginDataMapper
+import com.example.alien.excent.data.login.register.SignUpData
 import com.example.alien.excent.data.login.signin.SignInData
 import com.example.alien.excent.network.login.LoginClient
 import com.example.alien.excent.preferences.auth.AuthPreferences
@@ -25,8 +25,20 @@ internal constructor(
             .onErrorReturn { error -> mapperData.toSignInDataError(error) }
     }
 
+    fun submitNewUser(user: String, email: String, password: String): Single<SignUpData> {
+        return client.submitSignUp(user, email, password)
+            .map(mapperData::toSignUpData)
+            .doOnSuccess(this::saveUser)
+            .onErrorReturn { error -> mapperData.toSignUpDataError(error) }
+    }
+
     private fun saveUser(signInData: SignInData) {
         mutableAuthPreferences.saveAuthToken(signInData.token)
         mutableAuthPreferences.saveUserId(signInData.idUser.toLong())
+    }
+
+    private fun saveUser(signUpData: SignUpData) {
+        mutableAuthPreferences.saveAuthToken(signUpData.token)
+        mutableAuthPreferences.saveUserId(signUpData.idUser.toLong())
     }
 }

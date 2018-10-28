@@ -3,7 +3,7 @@ package com.example.alien.excent.ui.login.signin
 import butterknife.OnClick
 import com.example.alien.excent.R
 import com.example.alien.excent.module.ApplicationComponentHolder
-import com.example.alien.excent.network.login.signin.UiSignInResult
+import com.example.alien.excent.network.login.UiLoginResult
 import com.example.alien.excent.ui.base.ViewModelFragment
 import com.metova.slim.annotation.Layout
 import com.example.alien.excent.ui.navigation.Navigation
@@ -13,6 +13,7 @@ import com.example.alien.excent.ui.util.SnackbarUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import javax.inject.Inject
+
 
 @Layout(R.layout.fragment_sign_in)
 class SignInFragment : ViewModelFragment<SignInViewModel>() {
@@ -37,12 +38,13 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
 
     }
 
-    private fun handleLoginResult(uiSignInResult: UiSignInResult){
-        when (uiSignInResult) {
-            UiSignInResult.SUCCESS -> snackbarUtil.showSnackbar(view!!, "Exito :D")// navigation.navigateToAction(UiAction.REGISTER)
-            UiSignInResult.INVALID_CREDENTIALS -> snackbarUtil.showSnackbar(view!!, R.string.user_invalid)
-            UiSignInResult.CONNECTION_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.connection_error)
-            UiSignInResult.GENERIC_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.generic_request_error)
+    private fun handleLoginResult(uiLoginResult: UiLoginResult){
+        when (uiLoginResult) {
+            UiLoginResult.SUCCESS -> snackbarUtil.showSnackbar(view!!, "Exito :D")// navigation.navigateToAction(UiAction.REGISTER)
+            UiLoginResult.INVALID_CREDENTIALS -> snackbarUtil.showSnackbar(view!!, R.string.user_invalid)
+            UiLoginResult.FORBIDDEN_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.forbidden)
+            UiLoginResult.CONNECTION_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.connection_error)
+            UiLoginResult.GENERIC_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.generic_request_error)
         }
     }
 
