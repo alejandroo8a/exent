@@ -1,5 +1,7 @@
 package com.example.alien.excent.module
 
+import com.example.alien.excent.ui.core.CoreActivity
+import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
@@ -13,11 +15,16 @@ interface ApplicationComponent {
 
     //Injects
 
-    fun inject(splashScreenActivity: SplashScreenActivity)
+    fun inject(coreActivity: CoreActivity)
+
+    fun inject(homeFragment: HomeFragment)
 
     fun inject(loginActivity: LoginActivity)
 
+    fun inject(registerFragment: RegisterFragment)
+
     fun inject(signInFragment: SignInFragment)
 
-    fun inject(registerFragment: RegisterFragment)
+    fun inject(splashScreenActivity: SplashScreenActivity)
+
 }

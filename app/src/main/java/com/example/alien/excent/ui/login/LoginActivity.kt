@@ -28,8 +28,7 @@ class LoginActivity: ViewModelActivity<LoginViewModel>() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{ sessionActive ->
                     if(sessionActive) {
-                        //TODO SHOW HOME
-                        navigateToAction(UiAction.SIGN_IN)
+                        navigateToAction(UiAction.CORE)
                     }
                 })
     }

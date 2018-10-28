@@ -10,6 +10,8 @@ import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.example.alien.excent.R
+import com.example.alien.excent.ui.core.CoreActivity
+import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
@@ -44,6 +46,11 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
 
     override fun navigateToAction(uiAction: UiAction) {
         when(uiAction) {
+            UiAction.CORE -> launchActivityInClearTask(CoreActivity::class.java)
+            UiAction.HOME -> {
+                verifyActivity(CoreActivity::class.java)
+                launchFragment(HomeFragment())
+            }
             UiAction.LOGIN -> launchActivityInClearTask(LoginActivity::class.java)
             UiAction.SIGN_IN -> {
                 verifyActivity(LoginActivity::class.java)

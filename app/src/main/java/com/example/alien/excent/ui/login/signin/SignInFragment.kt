@@ -21,7 +21,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import javax.inject.Inject
 
-
 @Layout(R.layout.fragment_sign_in)
 class SignInFragment : ViewModelFragment<SignInViewModel>() {
 
@@ -34,7 +33,6 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
     override fun viewModelClass() = SignInViewModel::class.java
 
     override fun inject() = ApplicationComponentHolder.INSTANCE.getComponent().inject(this)
-
 
     override fun subscribeOnStart() {
         super.subscribeOnStart()
@@ -50,7 +48,7 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
 
     private fun handleLoginResult(uiLoginResult: UiLoginResult){
         when (uiLoginResult) {
-            UiLoginResult.SUCCESS -> snackbarUtil.showSnackbar(view!!, "Exito :D")// navigation.navigateToAction(UiAction.REGISTER)
+            UiLoginResult.SUCCESS -> navigation.navigateToAction(UiAction.CORE)
             UiLoginResult.INVALID_CREDENTIALS -> snackbarUtil.showSnackbar(view!!, R.string.user_invalid)
             UiLoginResult.FORBIDDEN_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.forbidden)
             UiLoginResult.CONNECTION_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.connection_error)
@@ -79,7 +77,7 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
         navigation.navigateToAction(UiAction.REGISTER)
     }
 
-    @OnEditorAction(R.id.edt_password_confirm)
+    @OnEditorAction(R.id.edt_password)
     fun onKeyboardAction(textView: TextView, actionId: Int): Boolean {
         return if (actionId == EditorInfo.IME_ACTION_DONE) {
             Keyboard.close(requireActivity(), view!!)

@@ -11,6 +11,7 @@ import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.network.login.UiLoginResult
 import com.example.alien.excent.ui.base.ViewModelFragment
 import com.example.alien.excent.ui.navigation.Navigation
+import com.example.alien.excent.ui.navigation.UiAction
 import com.example.alien.excent.ui.util.Keyboard
 import com.example.alien.excent.ui.util.SnackbarUtil
 import com.example.alien.excent.ui.util.forms.FormError
@@ -25,7 +26,6 @@ import javax.inject.Inject
 
 @Layout(R.layout.fragment_register)
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
-
 
     @Inject
     lateinit var snackbarUtil: SnackbarUtil
@@ -67,7 +67,7 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
     private fun handleRegisterResult(uiLoginResult: UiLoginResult){
         when (uiLoginResult) {
-            UiLoginResult.SUCCESS -> snackbarUtil.showSnackbar(view!!, "Exito :D")// navigation.navigateToAction(UiAction.REGISTER)
+            UiLoginResult.SUCCESS -> navigation.navigateToAction(UiAction.CORE)
             UiLoginResult.INVALID_CREDENTIALS -> snackbarUtil.showSnackbar(view!!, R.string.user_invalid)
             UiLoginResult.FORBIDDEN_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.forbidden)
             UiLoginResult.CONNECTION_ERROR -> snackbarUtil.showSnackbar(view!!, R.string.connection_error)
@@ -89,8 +89,6 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
             )
         }
     }
-
-
 
     @OnEditorAction(R.id.edt_password_confirm)
     fun onKeyboardAction(textView: TextView, actionId: Int): Boolean {
