@@ -4,6 +4,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete_ongoing_event">Lanzar evento en curso</string>
+    <string name="delete_pre_sell">Lanzar preventa</string>
+    <string name="delete_good_deal">Lanzar ofertas</string>
+    <string name="delete_re_sell">Lanzar reventa</string>
+    <string name="delete_food">Lanzar alimentos y bebidas</string>
+    <string name="delete_settings">Lanzar configuración de cuenta</string>
 
     <!-- LOGIN -->
     <string name="connection_error">Error al realizar la conexión</string>
@@ -27,5 +33,11 @@
     <string name="menu_re_sell">Reventa</string>
     <string name="menu_food">Bebidas y alimentos</string>
     <string name="menu_settings">Configuración de la cuenta</string>
+
+    <!-- HOME -->
+    <string name="home_next_events">Próximos eventos</string>
+    <string name="home_sports">Deportes</string>
+    <string name="home_concert">Conciertos</string>
+    <string name="home_fests">Festivales</string>
 
 </resources>
