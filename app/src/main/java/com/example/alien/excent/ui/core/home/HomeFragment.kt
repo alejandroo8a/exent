@@ -66,10 +66,10 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     }
 
     private fun populateToolbar() {
-        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_next_events)))
-        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_sports)))
-        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_concert)))
-        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_fests)))
+        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_next_events)).setTag(EventType.NEXT))
+        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_sports)).setTag(EventType.SPORTS))
+        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_concert)).setTag(EventType.CONCERTS))
+        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_fests)).setTag(EventType.FESTIVAL))
     }
 
 
