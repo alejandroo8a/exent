@@ -14,4 +14,9 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/bk_splash_screen</item>
     </style>
+
+    <style name="Theme.NoteItTheme" parent="Theme.AppCompat.Light">
+        <item name="android:textColorPrimary">@color/gray_60</item>
+        <item name="actionMenuTextColor">@color/gray_20</item>
+    </style>
 </resources>

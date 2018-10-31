@@ -19,4 +19,13 @@
     <string name="field_error_password_incorrect_format">La contraseña debe de contener una mayuscula, un número y minimo 8 caractéres </string>
     <string name="field_error_non_matching_password">Las contraseñas no coinciden </string>
 
+    <!-- MENU -->
+    <string name="menu_search">Buscar</string>
+    <string name="menu_ongoing_event">Evento en curso</string>
+    <string name="menu_pre_sell">Preventa</string>
+    <string name="menu_good_deal">Ofertas</string>
+    <string name="menu_re_sell">Reventa</string>
+    <string name="menu_food">Bebidas y alimentos</string>
+    <string name="menu_settings">Configuración de la cuenta</string>
+
 </resources>
