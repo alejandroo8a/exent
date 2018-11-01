@@ -5,6 +5,8 @@ import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
+import com.example.alien.excent.ui.settings.SettingsActivity
+import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.splash.SplashScreenActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -26,5 +28,9 @@ interface ApplicationComponent {
     fun inject(signInFragment: SignInFragment)
 
     fun inject(splashScreenActivity: SplashScreenActivity)
+
+    fun inject(settingsActivity: SettingsActivity)
+
+    fun inject(settingsHomeFragment: SettingsHomeFragment)
 
 }

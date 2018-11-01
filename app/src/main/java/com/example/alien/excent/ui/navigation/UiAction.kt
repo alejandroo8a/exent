@@ -5,5 +5,7 @@ enum class UiAction {
     HOME,
     LOGIN,
     SIGN_IN,
-    REGISTER
+    REGISTER,
+    SETTINGS,
+    SETTINGS_HOME
 }

@@ -40,4 +40,13 @@
     <string name="home_concert">Conciertos</string>
     <string name="home_fests">Festivales</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Configuración de cuenta</string>
+    <string name="settings_method_pay">Métodos de pago</string>
+    <string name="settings_user_information">Información de usuario</string>
+    <string name="settings_social_network_title">Conectar con redes sociales</string>
+    <string name="settings_social_network_facebook">Facebook</string>
+    <string name="settings_social_network_instagram">Instragram</string>
+    <string name="settings_log_out">Salir</string>
+
 </resources>

@@ -13,7 +13,6 @@ import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.*
 
-
 class SignInViewModel @Inject
 internal constructor(
     private val loginRepository: LoginRepository,

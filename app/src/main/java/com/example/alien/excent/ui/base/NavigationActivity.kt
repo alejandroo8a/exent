@@ -17,6 +17,8 @@ import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
 import com.example.alien.excent.ui.navigation.Navigation
 import com.example.alien.excent.ui.navigation.UiAction
+import com.example.alien.excent.ui.settings.SettingsActivity
+import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.util.SnackbarUtil
 import com.example.alien.excent.ui.util.ToastUtil
 import javax.inject.Inject
@@ -59,6 +61,11 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
             UiAction.REGISTER -> {
                 verifyActivity(LoginActivity::class.java)
                 launchFragment(RegisterFragment())
+            }
+            UiAction.SETTINGS -> launchActivity(SettingsActivity::class.java)
+            UiAction.SETTINGS_HOME -> {
+                verifyActivity(SettingsActivity::class.java)
+                launchFragment(SettingsHomeFragment())
             }
         }
     }

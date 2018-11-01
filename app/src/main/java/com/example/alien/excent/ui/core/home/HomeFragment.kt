@@ -17,6 +17,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import butterknife.BindView
+import com.example.alien.excent.ui.navigation.UiAction
 import kotlinx.android.synthetic.main.fragment_home.*
 
 @Layout(R.layout.fragment_home)
@@ -53,8 +54,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
             R.id.menu_pre_sell -> snackbarUtil.showSnackbar(view!!, R.string.delete_pre_sell)
             R.id.menu_good_deal -> snackbarUtil.showSnackbar(view!!, R.string.delete_good_deal)
             R.id.menu_re_sell -> snackbarUtil.showSnackbar(view!!, R.string.delete_re_sell)
-            R.id.menu_food -> snackbarUtil.showSnackbar(view!!, R.string.menu_food)
-            R.id.menu_settings -> snackbarUtil.showSnackbar(view!!, R.string.menu_settings)
+            R.id.menu_settings -> navigation.navigateToAction(UiAction.SETTINGS)
         }
         return super.onOptionsItemSelected(item)
     }
