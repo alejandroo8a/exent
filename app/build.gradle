@@ -106,6 +106,9 @@ android {
         //Timber
         implementation 'com.jakewharton.timber:timber:4.7.1'
 
+        //Loading progress
+        implementation 'com.wang.avi:library:2.1.3'
+
     }
 }
 
