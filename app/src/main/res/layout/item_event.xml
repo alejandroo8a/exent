@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <ImageView
+        android:id="@+id/im_event"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star"
+        tools:srcCompat="@drawable/bk_logo" />
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="ColdPlay"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/im_event"
+        app:layout_constraintTop_toTopOf="@+id/im_event" />
+
+    <ImageView
+        android:id="@+id/im_date"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/im_event"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title"
+        app:srcCompat="@android:drawable/btn_star"
+        tools:srcCompat="@drawable/ic_date" />
+
+    <TextView
+        android:id="@+id/txt_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="25 / Agosto / CDMX"
+        android:textColor="@color/gray_60"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/im_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/im_date"
+        app:layout_constraintTop_toTopOf="@+id/im_date" />
+
+    <ImageView
+        android:id="@+id/im_time"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/im_event"
+        app:layout_constraintTop_toBottomOf="@+id/im_date"
+        app:srcCompat="@drawable/ic_time" />
+
+    <TextView
+        android:id="@+id/txt_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="05:00 PM"
+        android:textColor="@color/gray_60"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/im_time"
+        app:layout_constraintEnd_toStartOf="@+id/im_location"
+        app:layout_constraintStart_toEndOf="@+id/im_time"
+        app:layout_constraintTop_toTopOf="@+id/im_time" />
+
+    <ImageView
+        android:id="@+id/im_location"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_date"
+        app:srcCompat="@drawable/ic_location" />
+
+    <TextView
+        android:id="@+id/txt_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Estadio Azteca"
+        android:textColor="@color/gray_60"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/im_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/im_location"
+        app:layout_constraintTop_toTopOf="@+id/im_location" />
+
+    <View
+        android:id="@+id/view_bottom"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

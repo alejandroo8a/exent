@@ -12,6 +12,7 @@ import com.metova.slim.annotation.Callback
 import com.metova.slim.annotation.Layout
 import javax.inject.Inject
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuInflater
@@ -27,6 +28,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     lateinit var snackbarUtil: SnackbarUtil
 
     @BindView(R.id.toolbar_home) lateinit var toolbarHome: Toolbar
+    @BindView(R.id.rv_events) lateinit var rvEvents: RecyclerView
 
     @Callback
     lateinit var  navigation: Navigation
@@ -41,6 +43,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
         tl_home.addOnTabSelectedListener(this)
         configureToolbar()
         populateToolbar()
+        rvEvents.requestFocus()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
