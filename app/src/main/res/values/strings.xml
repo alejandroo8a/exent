@@ -49,4 +49,7 @@
     <string name="settings_social_network_instagram">Instragram</string>
     <string name="settings_log_out">Salir</string>
 
+    <!-- Settings payment method-->
+    <string name="settings_no_payment_method">No hay métodos de pago activos.</string>
+
 </resources>

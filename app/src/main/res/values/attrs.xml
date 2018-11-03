@@ -4,4 +4,8 @@
         <attr name="title"/>
         <attr name="image"/>
     </declare-styleable>
+
+    <declare-styleable name="SettingsHeader">
+        <attr name="title"/>
+    </declare-styleable>
 </resources>

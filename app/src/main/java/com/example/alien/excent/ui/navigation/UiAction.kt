@@ -4,8 +4,9 @@ enum class UiAction {
     CORE,
     HOME,
     LOGIN,
-    SIGN_IN,
+    PAYMENT_METHOD,
     REGISTER,
     SETTINGS,
-    SETTINGS_HOME
+    SETTINGS_HOME,
+    SIGN_IN
 }
