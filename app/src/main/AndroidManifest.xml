@@ -27,7 +27,8 @@
             android:name=".ui.core.CoreActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".ui.settings.SettingsActivity"></activity>
+        <activity android:name=".ui.settings.SettingsActivity" />
+        <activity android:name=".ui.typeevents.TypeEventsActivity"></activity>
     </application>
 
 </manifest>

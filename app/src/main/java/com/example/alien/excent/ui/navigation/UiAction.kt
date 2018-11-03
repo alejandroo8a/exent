@@ -9,5 +9,7 @@ enum class UiAction {
     REGISTER,
     SETTINGS,
     SETTINGS_HOME,
-    SIGN_IN
+    SIGN_IN,
+    TYPE_EVENT,
+    TYPE_EVENT_HOME
 }

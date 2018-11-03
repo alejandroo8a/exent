@@ -54,9 +54,9 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.menu_ongoing_event -> snackbarUtil.showSnackbar(view!!, R.string.delete_ongoing_event)
-            R.id.menu_pre_sell -> snackbarUtil.showSnackbar(view!!, R.string.delete_pre_sell)
-            R.id.menu_good_deal -> snackbarUtil.showSnackbar(view!!, R.string.delete_good_deal)
-            R.id.menu_re_sell -> snackbarUtil.showSnackbar(view!!, R.string.delete_re_sell)
+            R.id.menu_pre_sell -> navigation.navigateToAction(UiAction.TYPE_EVENT)
+            R.id.menu_good_deal -> navigation.navigateToAction(UiAction.TYPE_EVENT)
+            R.id.menu_re_sell -> navigation.navigateToAction(UiAction.TYPE_EVENT)
             R.id.menu_settings -> navigation.navigateToAction(UiAction.SETTINGS)
         }
         return super.onOptionsItemSelected(item)

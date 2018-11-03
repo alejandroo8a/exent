@@ -11,6 +11,8 @@ import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
 import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
 import com.example.alien.excent.ui.splash.SplashScreenActivity
+import com.example.alien.excent.ui.typeevents.TypeEventsActivity
+import com.example.alien.excent.ui.typeevents.home.TypeEventsHomeFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -41,4 +43,8 @@ interface ApplicationComponent {
     fun inject(settingsActivity: SettingsActivity)
 
     fun inject(settingsHomeFragment: SettingsHomeFragment)
+
+    fun inject(typeEventsActivity: TypeEventsActivity)
+
+    fun inject(typeEventsHomeFragment: TypeEventsHomeFragment)
 }
