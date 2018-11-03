@@ -1,26 +1,22 @@
-package com.example.alien.excent.ui.settings.paymethods
+package com.example.alien.excent.ui.settings.paymethods.addpaymentmethod
 
-import butterknife.OnClick
 import com.example.alien.excent.R
 import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.ui.base.ViewModelFragment
 import com.example.alien.excent.ui.navigation.Navigation
-import com.example.alien.excent.ui.navigation.UiAction
 import com.metova.slim.annotation.Callback
 import com.metova.slim.annotation.Layout
 
-@Layout(R.layout.fragment_pay_methods)
-class PayMethodsFragment : ViewModelFragment<PayMethodsViewModel>() {
+@Layout(R.layout.fragment_add_payment_method)
+class AddPaymentMethodFragment : ViewModelFragment<AddPaymentMethodViewModel>() {
 
     @Callback
     lateinit var navigation: Navigation
 
-    override fun viewModelClass() = PayMethodsViewModel::class.java
+    override fun viewModelClass() = AddPaymentMethodViewModel::class.java
 
     override fun inject() = ApplicationComponentHolder.INSTANCE.getComponent().inject(this)
 
-    @OnClick(R.id.fb_add_card)
-    fun goToAddPayment() {
-        navigation.navigateToAction(UiAction.ADD_PAYMENT_METHOD)
-    }
+
+
 }

@@ -20,6 +20,7 @@ import com.example.alien.excent.ui.navigation.UiAction
 import com.example.alien.excent.ui.settings.SettingsActivity
 import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
+import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
 import com.example.alien.excent.ui.util.SnackbarUtil
 import com.example.alien.excent.ui.util.ToastUtil
 import javax.inject.Inject
@@ -49,6 +50,10 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
 
     override fun navigateToAction(uiAction: UiAction) {
         when (uiAction) {
+            UiAction.ADD_PAYMENT_METHOD -> {
+                verifyActivity(SettingsActivity::class.java)
+                launchFragment(AddPaymentMethodFragment())
+            }
             UiAction.CORE -> launchActivityInClearTask(CoreActivity::class.java)
             UiAction.HOME -> {
                 verifyActivity(CoreActivity::class.java)

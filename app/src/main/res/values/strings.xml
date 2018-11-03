@@ -51,5 +51,8 @@
 
     <!-- Settings payment method-->
     <string name="settings_no_payment_method">No hay métodos de pago activos.</string>
+    <string name="settings_card">Tarjeta</string>
+    <string name="settings_paypal">PayPal</string>
+    <string name="settings_card_number">Número de tarjeta</string>
 
 </resources>

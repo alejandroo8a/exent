@@ -9,6 +9,7 @@ import com.example.alien.excent.ui.network.LoadingDialogFragment
 import com.example.alien.excent.ui.settings.SettingsActivity
 import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
+import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
 import com.example.alien.excent.ui.splash.SplashScreenActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -18,6 +19,8 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     //Injects
+
+    fun inject(addPaymentMethodFragment: AddPaymentMethodFragment)
 
     fun inject(coreActivity: CoreActivity)
 
