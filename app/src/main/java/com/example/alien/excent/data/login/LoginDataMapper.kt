@@ -17,6 +17,8 @@ internal constructor(private val responseConversions: ResponseConversions){
         return SignInData(
             signInResponse.token,
             signInResponse.idUser,
+            signInResponse.userName,
+            signInResponse.email,
             LoginType.SUCCESS
         )
     }
@@ -30,13 +32,15 @@ internal constructor(private val responseConversions: ResponseConversions){
             result === NetworkResult.FORBIDDEN_ERROR -> LoginType.FORBIDDEN_ERROR
             else -> LoginType.GENERIC_ERROR
         }
-        return SignInData("", 0, type)
+        return SignInData("", 0, "", "", type)
     }
 
     fun toSignUpData(signUpResponse: RegisterResponse): SignUpData {
         return SignUpData(
             signUpResponse.token,
             signUpResponse.idUser,
+            signUpResponse.userName,
+            signUpResponse.email,
             LoginType.SUCCESS
         )
     }
@@ -50,6 +54,6 @@ internal constructor(private val responseConversions: ResponseConversions){
             result === NetworkResult.FORBIDDEN_ERROR -> LoginType.FORBIDDEN_ERROR
             else -> LoginType.GENERIC_ERROR
         }
-        return SignUpData("", 0, type)
+        return SignUpData("", 0, "", "", type)
     }
 }

@@ -35,10 +35,14 @@ internal constructor(
     private fun saveUser(signInData: SignInData) {
         mutableAuthPreferences.saveAuthToken(signInData.token)
         mutableAuthPreferences.saveUserId(signInData.idUser.toLong())
+        mutableAuthPreferences.saveUserName(signInData.userName)
+        mutableAuthPreferences.saveEmail(signInData.email)
     }
 
     private fun saveUser(signUpData: SignUpData) {
         mutableAuthPreferences.saveAuthToken(signUpData.token)
         mutableAuthPreferences.saveUserId(signUpData.idUser.toLong())
+        mutableAuthPreferences.saveUserName(signUpData.userName)
+        mutableAuthPreferences.saveEmail(signUpData.email)
     }
 }

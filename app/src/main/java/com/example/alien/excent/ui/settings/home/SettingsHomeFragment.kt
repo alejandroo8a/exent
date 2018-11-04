@@ -23,4 +23,9 @@ class SettingsHomeFragment : ViewModelFragment<SettingsHomeViewModel>() {
     fun goToPaymentMethod() {
         navigation.navigateToAction(UiAction.PAYMENT_METHOD)
     }
+
+    @OnClick(R.id.ss_user_information)
+    fun goToUserInformation() {
+        navigation.navigateToAction(UiAction.USER_INFORMATION)
+    }
 }

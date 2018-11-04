@@ -10,6 +10,7 @@ import com.example.alien.excent.ui.settings.SettingsActivity
 import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
 import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
+import com.example.alien.excent.ui.settings.userinformation.UserInformationFragment
 import com.example.alien.excent.ui.splash.SplashScreenActivity
 import com.example.alien.excent.ui.typeevents.TypeEventsActivity
 import com.example.alien.excent.ui.typeevents.home.TypeEventsHomeFragment
@@ -47,4 +48,6 @@ interface ApplicationComponent {
     fun inject(typeEventsActivity: TypeEventsActivity)
 
     fun inject(typeEventsHomeFragment: TypeEventsHomeFragment)
+
+    fun inject(userInformationFragment: UserInformationFragment)
 }

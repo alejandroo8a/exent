@@ -15,6 +15,14 @@ internal constructor(private val preferences: Preferences){
         return preferences.retrieve(Keys.TOKEN, Defaults.TOKEN)
     }
 
+    fun getUserName():String {
+        return preferences.retrieve(Keys.USER_NAME, Defaults.USER_NAME)
+    }
+
+    fun getEmail():String {
+        return preferences.retrieve(Keys.EMAIL, Defaults.EMAIL)
+    }
+
     internal class Keys private constructor() {
 
         init {
@@ -26,6 +34,8 @@ internal constructor(private val preferences: Preferences){
 
             const val USER_ID = PREFIX + "USER_ID"
             const val TOKEN = PREFIX + "TOKEN"
+            const val USER_NAME = PREFIX + "USER_NAME"
+            const val EMAIL = PREFIX + "EMAIL"
         }
     }
 
@@ -38,6 +48,8 @@ internal constructor(private val preferences: Preferences){
         companion object {
             internal const val USER_ID: Long = 0
             internal const val TOKEN: String = ""
+            internal const val USER_NAME: String = ""
+            internal const val EMAIL: String = ""
         }
     }
 }

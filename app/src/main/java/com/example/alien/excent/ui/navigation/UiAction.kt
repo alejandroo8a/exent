@@ -11,5 +11,6 @@ enum class UiAction {
     SETTINGS_HOME,
     SIGN_IN,
     TYPE_EVENT,
-    TYPE_EVENT_HOME
+    TYPE_EVENT_HOME,
+    USER_INFORMATION
 }

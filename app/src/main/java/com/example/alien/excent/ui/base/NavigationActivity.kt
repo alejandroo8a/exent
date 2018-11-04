@@ -21,6 +21,7 @@ import com.example.alien.excent.ui.settings.SettingsActivity
 import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
 import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
+import com.example.alien.excent.ui.settings.userinformation.UserInformationFragment
 import com.example.alien.excent.ui.typeevents.TypeEventsActivity
 import com.example.alien.excent.ui.typeevents.home.TypeEventsHomeFragment
 import com.example.alien.excent.ui.util.SnackbarUtil
@@ -83,6 +84,10 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
             UiAction.TYPE_EVENT_HOME -> {
                 verifyActivity(TypeEventsActivity::class.java)
                 launchFragment(TypeEventsHomeFragment())
+            }
+            UiAction.USER_INFORMATION -> {
+                verifyActivity(SettingsActivity::class.java)
+                launchFragment(UserInformationFragment())
             }
         }
     }
