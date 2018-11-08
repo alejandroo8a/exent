@@ -29,6 +29,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name=".ui.settings.SettingsActivity" />
         <activity android:name=".ui.typeevents.TypeEventsActivity" />
+        <activity android:name=".ui.settings.userinformation.changepassword.ChangePasswordOverlayActivity"></activity>
     </application>
 
 </manifest>

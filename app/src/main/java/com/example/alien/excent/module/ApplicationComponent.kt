@@ -11,6 +11,7 @@ import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
 import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
 import com.example.alien.excent.ui.settings.userinformation.UserInformationFragment
+import com.example.alien.excent.ui.settings.userinformation.changepassword.ChangePasswordOverlayActivity
 import com.example.alien.excent.ui.splash.SplashScreenActivity
 import com.example.alien.excent.ui.typeevents.TypeEventsActivity
 import com.example.alien.excent.ui.typeevents.home.TypeEventsHomeFragment
@@ -24,6 +25,8 @@ interface ApplicationComponent {
     //Injects
 
     fun inject(addPaymentMethodFragment: AddPaymentMethodFragment)
+
+    fun inject(changePasswordOverlayActivity: ChangePasswordOverlayActivity)
 
     fun inject(coreActivity: CoreActivity)
 

@@ -22,11 +22,18 @@ import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
 import com.example.alien.excent.ui.settings.paymethods.PayMethodsFragment
 import com.example.alien.excent.ui.settings.paymethods.addpaymentmethod.AddPaymentMethodFragment
 import com.example.alien.excent.ui.settings.userinformation.UserInformationFragment
+import com.example.alien.excent.ui.settings.userinformation.changepassword.ChangePasswordOverlayActivity
 import com.example.alien.excent.ui.typeevents.TypeEventsActivity
 import com.example.alien.excent.ui.typeevents.home.TypeEventsHomeFragment
 import com.example.alien.excent.ui.util.SnackbarUtil
 import com.example.alien.excent.ui.util.ToastUtil
 import javax.inject.Inject
+import com.example.alien.excent.ui.overlay.BaseOverlayActivity
+import com.example.alien.excent.ui.util.overlay.ScreenShotUtil
+
+
+
+
 
 
 abstract class NavigationActivity: BaseActivity(), Navigation {
@@ -35,6 +42,8 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
 
     @Inject protected lateinit var snackbarUtil: SnackbarUtil
     @Inject protected lateinit var toastUtil: ToastUtil
+
+    @Inject protected lateinit var screenShotUtil: ScreenShotUtil
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -56,6 +65,10 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
             UiAction.ADD_PAYMENT_METHOD -> {
                 verifyActivity(SettingsActivity::class.java)
                 launchFragment(AddPaymentMethodFragment())
+            }
+            UiAction.CHANGE_PASSWORD -> {
+                prepareToLaunchOverlay()
+                launchActivity(ChangePasswordOverlayActivity::class.java)
             }
             UiAction.CORE -> launchActivityInClearTask(CoreActivity::class.java)
             UiAction.HOME -> {
@@ -141,6 +154,12 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
     private fun verifyActivity(activityClass: Class<out AppCompatActivity>) {
         if( !activityClass.isInstance(this)){
             throw IllegalStateException("Launching fragment is not avaliable from this activity")
+        }
+    }
+
+    private fun prepareToLaunchOverlay() {
+        if (this !is BaseOverlayActivity<*>) {
+            screenShotUtil.takeScreenShot(this)
         }
     }
 }

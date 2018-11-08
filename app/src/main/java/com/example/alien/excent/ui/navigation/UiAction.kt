@@ -2,6 +2,7 @@ package com.example.alien.excent.ui.navigation
 
 enum class UiAction {
     ADD_PAYMENT_METHOD,
+    CHANGE_PASSWORD,
     CORE,
     HOME,
     LOGIN,

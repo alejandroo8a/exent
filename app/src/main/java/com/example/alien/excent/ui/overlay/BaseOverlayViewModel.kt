@@ -16,7 +16,7 @@ import timber.log.Timber
 
 
 
-class BaseOverlayViewModel @Inject
+open class BaseOverlayViewModel @Inject
 internal constructor(
     @SuppressLint("StaticFieldLeak") private val context: Context,
     private val screenShotUtil: ScreenShotUtil
