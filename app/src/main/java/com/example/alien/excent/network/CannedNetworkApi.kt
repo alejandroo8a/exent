@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Environment
 import com.example.alien.excent.ModelsApiClient.RegisterRequest
 import com.example.alien.excent.ModelsApiClient.RegisterResponse
+import com.example.alien.excent.network.core.EventsDetailResponse
+import com.example.alien.excent.network.core.EventsResponse
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
 import com.squareup.moshi.JsonAdapter
@@ -42,6 +44,17 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
             "forbidden" -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
             "notFound" -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
             "connection" -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
+            else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
+        }
+    }
+
+    override fun getEvents(idUser: Int, idLocation: Int, idCategory: Int): Single<EventsResponse> {
+        return when (idUser) {
+            1 -> readFileForSingle("cannedData/EventsResponse.json", EventsResponse::class.java )
+            2 -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
+            3 -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
+            4 -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
+            5 -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
             else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
         }
     }

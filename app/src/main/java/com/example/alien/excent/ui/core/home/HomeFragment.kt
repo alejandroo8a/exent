@@ -2,24 +2,26 @@ package com.example.alien.excent.ui.core.home
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.*
+import android.util.TypedValue
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import butterknife.BindView
 import com.example.alien.excent.R
 import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.ui.base.ViewModelFragment
 import com.example.alien.excent.ui.navigation.Navigation
+import com.example.alien.excent.ui.navigation.UiAction
 import com.example.alien.excent.ui.util.SnackbarUtil
 import com.metova.slim.annotation.Callback
 import com.metova.slim.annotation.Layout
-import javax.inject.Inject
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import butterknife.BindView
-import com.example.alien.excent.ui.navigation.UiAction
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
+
 
 @Layout(R.layout.fragment_home)
 class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelectedListener {
@@ -33,6 +35,10 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     @Callback
     lateinit var  navigation: Navigation
 
+
+    private lateinit var adapter: AdapterEvents
+    private val totalColumns = 2
+
     override fun viewModelClass() = HomeViewModel::class.java
 
     override fun inject() = ApplicationComponentHolder.INSTANCE.getComponent().inject(this)
@@ -43,7 +49,17 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
         tl_home.addOnTabSelectedListener(this)
         configureToolbar()
         populateToolbar()
+        configureAdapter()
         rvEvents.requestFocus()
+    }
+
+    override fun subscribeOnStart() {
+        super.subscribeOnStart()
+
+
+        addSubscription(viewModel()?.eventContentUpdates()!!
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(adapter::populateEvents))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -75,6 +91,15 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
         tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_fests)).setTag(EventType.FESTIVAL))
     }
 
+    private fun configureAdapter() {
+        rv_events.setHasFixedSize(true)
+        //rv_events.layoutManager = StaggeredGridLayoutManager(totalColumns, RecyclerView.VERTICAL)
+        rv_events.layoutManager = GridLayoutManager(context, totalColumns)
+        adapter = AdapterEvents(context!!, {
+
+        })
+        rv_events.adapter = adapter
+    }
 
     override fun onTabReselected(tab: TabLayout.Tab?) {
         // no-op
@@ -84,7 +109,8 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
         // no-op
     }
 
-    override fun onTabSelected(tab: TabLayout.Tab?) {
-        // no-op
+    override fun onTabSelected(tab: TabLayout.Tab) {
+        val  type: EventType = tab.tag as EventType
+        viewModel()?.updateEventsContent(type)
     }
 }

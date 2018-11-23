@@ -17,12 +17,12 @@ class SplashScreenActivity: ViewModelActivity<SplashScreenViewModel>() {
     override fun inject() = ApplicationComponentHolder.getInstance().getComponent().inject(this)
 
     override fun subscribeOnStart(){
-        addSubscription(Completable.timer(2, TimeUnit.SECONDS)
+        addSubscription(Completable.timer(1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::launchLoginAcitivity))
+                .subscribe(this::launchLoginActivity))
     }
 
-    private fun launchLoginAcitivity() {
+    private fun launchLoginActivity() {
         navigateToAction(UiAction.LOGIN)
     }
 }

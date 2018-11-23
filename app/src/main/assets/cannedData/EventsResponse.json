@@ -1,0 +1,31 @@
+{
+  "events": [
+    {
+      "idEvent": "7",
+      "name": "ColdPlay",
+      "date": "25 / Agosto / 2018",
+      "time": "05 : 00",
+      "place": "Foro sol",
+      "image": "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2016/04/13/colplay_tour_colombia_a_head_full_of_dreams_0.jpg?itok=CYIxQd6x",
+      "price": 1200
+    },
+    {
+      "idEvent": "8",
+      "name": "Teddy Geiger",
+      "date": "25 / Agosto / 2017",
+      "time": "05 : 00",
+      "place": "Foro sol",
+      "image": "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2016/04/13/colplay_tour_colombia_a_head_full_of_dreams_0.jpg?itok=CYIxQd6x",
+      "price": 1000
+    },
+    {
+      "idEvent": "9",
+      "name": "Green day",
+      "date": "25 / Agosto / 2017",
+      "time": "05 : 00",
+      "place": "Foro sol",
+      "image": "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2016/04/13/colplay_tour_colombia_a_head_full_of_dreams_0.jpg?itok=CYIxQd6x",
+      "price": 1000
+    }
+  ]
+}

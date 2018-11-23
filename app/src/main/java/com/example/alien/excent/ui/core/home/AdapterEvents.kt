@@ -10,9 +10,9 @@ import com.example.alien.excent.R
 import kotlinx.android.synthetic.main.item_home.view.*
 
 class AdapterEvents(
-    var aEvents: List<UiEvents>,
     val context: Context,
-    private val listener: (UiEvents) -> Unit
+    private val listener: (UiEvents) -> Unit,
+    var aEvents: List<UiEvents> = ArrayList()
 ) : RecyclerView.Adapter<AdapterEvents.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
