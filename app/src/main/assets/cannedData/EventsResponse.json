@@ -7,7 +7,8 @@
       "time": "05 : 00",
       "place": "Foro sol",
       "image": "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2016/04/13/colplay_tour_colombia_a_head_full_of_dreams_0.jpg?itok=CYIxQd6x",
-      "price": 1200
+      "price": 1200,
+      "description": "Esta evento estara muy genial"
     },
     {
       "idEvent": "8",
@@ -16,7 +17,8 @@
       "time": "05 : 00",
       "place": "Foro sol",
       "image": "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2016/04/13/colplay_tour_colombia_a_head_full_of_dreams_0.jpg?itok=CYIxQd6x",
-      "price": 1000
+      "price": 1000,
+      "description": "Esta evento estara muy genial"
     },
     {
       "idEvent": "9",
@@ -25,7 +27,8 @@
       "time": "05 : 00",
       "place": "Foro sol",
       "image": "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2016/04/13/colplay_tour_colombia_a_head_full_of_dreams_0.jpg?itok=CYIxQd6x",
-      "price": 1000
+      "price": 1000,
+      "description": "Esta evento estara muy genial"
     }
   ]
 }

@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity
 import com.example.alien.excent.R
 import com.example.alien.excent.ui.core.CoreActivity
 import com.example.alien.excent.ui.core.home.HomeFragment
+import com.example.alien.excent.ui.core.home.UiEvents
+import com.example.alien.excent.ui.event.EventActivity
+import com.example.alien.excent.ui.event.core.EventCoreFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
@@ -30,10 +33,7 @@ import com.example.alien.excent.ui.util.ToastUtil
 import javax.inject.Inject
 import com.example.alien.excent.ui.overlay.BaseOverlayActivity
 import com.example.alien.excent.ui.util.overlay.ScreenShotUtil
-
-
-
-
+import java.io.Serializable
 
 
 abstract class NavigationActivity: BaseActivity(), Navigation {
@@ -102,11 +102,43 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
                 verifyActivity(SettingsActivity::class.java)
                 launchFragment(UserInformationFragment())
             }
+            else -> {
+                showGenericSnackbar(R.string.launch_action_not_supported)
+            }
+        }
+    }
+
+    override fun <T> navigateToAction(action: UiAction, argument: T, nameArgument: String) {
+        when (action) {
+            UiAction.EVENT -> {
+                if (argument is UiEvents) {
+                    launchActivityWithArguments(EventActivity::class.java, argument, nameArgument)
+                } else {
+                    throw IllegalArgumentException()
+                }
+            }
+            UiAction.EVENT_CORE -> {
+                if (argument is UiEvents) {
+                    launchFragment(EventCoreFragment.newInstance(argument as UiEvents))
+                } else {
+                    throw IllegalArgumentException()
+                }
+            }
+            else -> {
+                showGenericSnackbar(R.string.launch_action_not_supported)
+            }
         }
     }
 
     private fun showGenericSnackbar(@StringRes message: Int) {
         snackbarUtil.showSnackbar(findViewById(android.R.id.content), message)
+    }
+
+    private fun <T> launchActivityWithArguments(activity: Class<out AppCompatActivity>, argument: T, nameArgument : String){
+        val intent = Intent(this, activity)
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        intent.putExtra(nameArgument, argument as Serializable)
+        launchActivityIntent(intent)
     }
 
     private fun launchActivity(activity: Class<out AppCompatActivity>) {

@@ -1,5 +1,7 @@
 package com.example.alien.excent.ui.core.home
 
+import java.io.Serializable
+
 data class UiEvents(
     val idEvent: Int,
     val title: String,
@@ -8,4 +10,4 @@ data class UiEvents(
     val location: String,
     val price: String,
     val image : String
-)
+) : Serializable

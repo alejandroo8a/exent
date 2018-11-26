@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginTop="80dp"
-            app:image="@drawable/ic_settings"
+            app:image="@drawable/ic_pay_method"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header"
@@ -33,7 +33,7 @@
             android:id="@+id/ss_user_information"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            app:image="@drawable/ic_settings"
+            app:image="@drawable/ic_user_information"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ss_payment_method"
@@ -68,7 +68,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_subtitle"
-            app:srcCompat="@android:drawable/btn_star" />
+            app:srcCompat="@drawable/ic_fb" />
 
         <ImageView
             android:id="@+id/im_instagram"
@@ -78,7 +78,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/im_facebook"
-            app:srcCompat="@android:drawable/btn_star" />
+            app:srcCompat="@drawable/ic_instagram" />
 
         <TextView
             android:id="@+id/txt_facebook"

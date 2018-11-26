@@ -2,6 +2,8 @@ package com.example.alien.excent.module
 
 import com.example.alien.excent.ui.core.CoreActivity
 import com.example.alien.excent.ui.core.home.HomeFragment
+import com.example.alien.excent.ui.event.EventActivity
+import com.example.alien.excent.ui.event.core.EventCoreFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
@@ -29,6 +31,10 @@ interface ApplicationComponent {
     fun inject(changePasswordOverlayActivity: ChangePasswordOverlayActivity)
 
     fun inject(coreActivity: CoreActivity)
+
+    fun inject(eventActivity: EventActivity)
+
+    fun inject(eventCoreFragment: EventCoreFragment)
 
     fun inject(homeFragment: HomeFragment)
 

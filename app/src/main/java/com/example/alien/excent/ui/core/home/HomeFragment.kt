@@ -35,6 +35,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     @Callback
     lateinit var  navigation: Navigation
 
+    private val event = "EVENT"
 
     private lateinit var adapter: AdapterEvents
     private val totalColumns = 2
@@ -93,10 +94,9 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
 
     private fun configureAdapter() {
         rv_events.setHasFixedSize(true)
-        //rv_events.layoutManager = StaggeredGridLayoutManager(totalColumns, RecyclerView.VERTICAL)
         rv_events.layoutManager = GridLayoutManager(context, totalColumns)
         adapter = AdapterEvents(context!!, {
-
+            navigateToEventDetail(it)
         })
         rv_events.adapter = adapter
     }
@@ -112,5 +112,9 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     override fun onTabSelected(tab: TabLayout.Tab) {
         val  type: EventType = tab.tag as EventType
         viewModel()?.updateEventsContent(type)
+    }
+
+    fun navigateToEventDetail(uiEvent : UiEvents){
+        navigation.navigateToAction(UiAction.EVENT, uiEvent, event)
     }
 }

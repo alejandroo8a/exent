@@ -4,6 +4,8 @@ enum class UiAction {
     ADD_PAYMENT_METHOD,
     CHANGE_PASSWORD,
     CORE,
+    EVENT,
+    EVENT_CORE,
     HOME,
     LOGIN,
     PAYMENT_METHOD,
