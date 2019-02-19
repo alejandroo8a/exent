@@ -23,4 +23,9 @@ class PayMethodsFragment : ViewModelFragment<PayMethodsViewModel>() {
     fun goToAddPayment() {
         navigation.navigateToAction(UiAction.ADD_PAYMENT_METHOD)
     }
+
+    @OnClick(R.id.im_back)
+    fun goToBack() {
+        navigation.navigateBack()
+    }
 }

@@ -23,4 +23,9 @@ class UserInformationFragment : ViewModelFragment<UserInformationViewModel>() {
     fun goToChangePassword() {
         navigation.navigateToAction(UiAction.CHANGE_PASSWORD)
     }
+
+    @OnClick(R.id.im_back)
+    fun goToBack() {
+        navigation.navigateBack()
+    }
 }

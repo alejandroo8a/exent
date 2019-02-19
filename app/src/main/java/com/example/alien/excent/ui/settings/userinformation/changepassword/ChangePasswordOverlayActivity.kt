@@ -4,6 +4,7 @@ import android.support.annotation.VisibleForTesting
 import android.support.constraint.ConstraintLayout
 import android.view.View
 import butterknife.BindView
+import butterknife.OnClick
 import com.example.alien.excent.R
 import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.ui.network.LoadingDialogFragment
@@ -29,5 +30,10 @@ class ChangePasswordOverlayActivity : BaseOverlayActivity<ChangePasswordOverlayV
     public override fun onStop() {
         loadingDialog.dismissAllowingStateLoss()
         super.onStop()
+    }
+
+    @OnClick(R.id.im_close)
+    fun goToBack() {
+        navigateBack()
     }
 }

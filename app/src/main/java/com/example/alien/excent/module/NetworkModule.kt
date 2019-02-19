@@ -51,7 +51,7 @@ class NetworkModule {
     fun providesOkHttpClient(authPreferences: AuthPreferences, subjectSupplier: SubjectSupplier): OkHttpClient {
         val okhttpclientBuilder = OkHttpClient.Builder()
                 .addInterceptor(createAuthInterceptor(authPreferences))
-                .addInterceptor(createLogoutInterceptor(authPreferences, subjectSupplier.logoutSubject!!))
+                .addInterceptor(createLogoutInterceptor(authPreferences, subjectSupplier))
                 .readTimeout(1, TimeUnit.MINUTES)
                 .writeTimeout(1, TimeUnit.MINUTES)
                 .connectTimeout(1, TimeUnit.MINUTES)
@@ -116,14 +116,14 @@ class NetworkModule {
         }
     }
 
-    private fun createLogoutInterceptor(authPreferences: AuthPreferences, logoutSubject: CompletableSubject): Interceptor {
+    private fun createLogoutInterceptor(authPreferences: AuthPreferences, logoutSubject: SubjectSupplier): Interceptor {
         return Interceptor {
             val request = it.request()
             val response = it.proceed(request)
             val authToken = authPreferences.getAuthToken()
             if (authToken != null && responseIndicatesExpiredAuthToken(response)) {
                 Timber.d("Invalid auth token. Logging out...")
-                logoutSubject.onComplete()
+                logoutSubject.emitExpiredSessionSubject()
             }
             response
         }

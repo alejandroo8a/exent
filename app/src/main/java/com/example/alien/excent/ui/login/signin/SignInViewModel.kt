@@ -17,7 +17,6 @@ class SignInViewModel @Inject
 internal constructor(
     private val loginRepository: LoginRepository,
     private val uiMapper: LoginUiMapper,
-
     private val formHelper: FormHelper
 ) : ViewModel(), FormCallback {
 

@@ -1,24 +1,30 @@
 package com.example.alien.excent.data
 
-import io.reactivex.subjects.CompletableSubject
-import timber.log.Timber
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 import javax.inject.Singleton
-
 
 @Singleton
 class SubjectSupplier @Inject
 constructor() {
 
-    var logoutSubject: CompletableSubject? = null
-        private set
+    private val SignOutSubject = PublishSubject.create<Boolean>()
+    private val expiredSessionSubject = PublishSubject.create<Boolean>()
 
-    init {
-        resetLogoutState()
+    fun getSignOutSubject(): Observable<Boolean> {
+        return SignOutSubject
     }
 
-    fun resetLogoutState() {
-        Timber.d("Resetting logout state.")
-        logoutSubject = CompletableSubject.create()
+    fun emitOnSignOutSubject() {
+        SignOutSubject.onNext(true)
+    }
+
+    fun getExpiredSessionSubject(): Observable<Boolean> {
+        return expiredSessionSubject
+    }
+
+    fun emitExpiredSessionSubject() {
+        expiredSessionSubject.onNext(true)
     }
 }
