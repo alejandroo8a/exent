@@ -6,6 +6,7 @@ import com.example.alien.excent.network.core.EventsDetailResponse
 import com.example.alien.excent.network.core.EventsResponse
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
+import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -19,6 +20,9 @@ interface NetworkApi {
 
     @POST("login/signup")
     fun submitSignUp(@Body signUpRequest: RegisterRequest): Single<RegisterResponse>
+
+    @POST("login/forgot_password")
+    fun forgotPassword(@Body email: String): Completable
 
     @GET("events/{idUser}/{idLocation}/{idCategory}")
     fun getEvents(@Path("idUser") idUser: Int,

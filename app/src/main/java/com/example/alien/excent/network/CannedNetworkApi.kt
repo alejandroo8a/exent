@@ -11,6 +11,7 @@ import com.example.alien.excent.network.login.signin.SignInResponse
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import io.reactivex.Completable
 import io.reactivex.Single
 import okhttp3.MediaType
 import okhttp3.ResponseBody
@@ -25,6 +26,10 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
 
     private val mediaTypeJson = MediaType.parse("application/json")
     private val emptyJsonResponse = ResponseBody.create(mediaTypeJson, "{}")
+
+    override fun forgotPassword(email: String): Completable {
+        return Completable.complete()
+    }
 
     override fun submitSignIn(signInRequest: SignInRequest): Single<SignInResponse> {
         return when (signInRequest.user) {

@@ -7,6 +7,7 @@ import com.example.alien.excent.ui.event.core.EventCoreFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
+import com.example.alien.excent.ui.login.signin.passwordforgot.ForgotPasswordOverlayActivity
 import com.example.alien.excent.ui.network.LoadingDialogFragment
 import com.example.alien.excent.ui.settings.SettingsActivity
 import com.example.alien.excent.ui.settings.home.SettingsHomeFragment
@@ -29,6 +30,8 @@ interface ApplicationComponent {
     fun inject(addPaymentMethodFragment: AddPaymentMethodFragment)
 
     fun inject(changePasswordOverlayActivity: ChangePasswordOverlayActivity)
+
+    fun inject(forgotPasswordOverlayActivity: ForgotPasswordOverlayActivity)
 
     fun inject(coreActivity: CoreActivity)
 

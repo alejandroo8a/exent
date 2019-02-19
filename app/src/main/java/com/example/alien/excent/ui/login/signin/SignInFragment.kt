@@ -43,7 +43,14 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
         addSubscription(viewModel()!!.getLoginResult()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::handleLoginResult))
+        handleShouldShowMessageSuccesForgotPassword(viewModel()!!.getShouldShowMessageSuccesForgotPassword())
+    }
 
+    private fun handleShouldShowMessageSuccesForgotPassword(value : Boolean) {
+        if(value) {
+            snackbarUtil.showSnackbar(view!!, R.string.verify_email)
+            viewModel()!!.setShouldShowMessageSuccesForgotPassword()
+        }
     }
 
     private fun handleLoginResult(uiLoginResult: UiLoginResult){
@@ -75,6 +82,11 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
     @OnClick(R.id.btn_register)
     fun goToRegister() {
         navigation.navigateToAction(UiAction.REGISTER)
+    }
+
+    @OnClick(R.id.txt_forgot_password)
+    fun goToForgotPassword() {
+        navigation.navigateToAction(UiAction.FORGOT_PASSWORD)
     }
 
     @OnEditorAction(R.id.edt_password)

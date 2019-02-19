@@ -1,5 +1,6 @@
 package com.example.alien.excent.data.login
 
+import com.example.alien.excent.data.NetworkResult
 import com.example.alien.excent.data.login.register.SignUpData
 import com.example.alien.excent.data.login.signin.SignInData
 import com.example.alien.excent.network.login.LoginClient
@@ -7,12 +8,24 @@ import com.example.alien.excent.preferences.auth.AuthPreferences
 import io.reactivex.Single
 import javax.inject.Inject
 import com.example.alien.excent.preferences.auth.MutableAuthPreferences
+import dagger.Reusable
 
+@Reusable
 class LoginRepository @Inject
 internal constructor(
     private val authPreferences: AuthPreferences, private val mutableAuthPreferences: MutableAuthPreferences,
     private val client: LoginClient, private val mapperData: LoginDataMapper
 ) {
+
+    private var shouldShowMessageSuccesForgotPassword = false
+
+    fun setShouldShowMessageSuccesForgotPassword(value : Boolean) {
+        this.shouldShowMessageSuccesForgotPassword = value
+    }
+
+    fun showMessageSuccesForgotPassword (): Boolean {
+        return shouldShowMessageSuccesForgotPassword
+    }
 
     fun isSessionActive(): Boolean {
         return authPreferences.getUserId() != 0L
@@ -30,6 +43,10 @@ internal constructor(
             .map(mapperData::toSignUpData)
             .doOnSuccess(this::saveUser)
             .onErrorReturn { error -> mapperData.toSignUpDataError(error) }
+    }
+
+    fun forgotPassword(email: String) : Single<NetworkResult> {
+        return client.forgotPassword(email)
     }
 
     private fun saveUser(signInData: SignInData) {

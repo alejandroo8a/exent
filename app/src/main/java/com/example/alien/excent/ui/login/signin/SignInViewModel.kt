@@ -25,13 +25,21 @@ internal constructor(
         initFormHelper()
     }
 
-    private val resultSubject = PublishSubject.create<UiLoginResult>()
-    private var disposable: Disposable = NoOpDisposable()
+    private val resultSignInSubject = PublishSubject.create<UiLoginResult>()
+    private var signInDisposable: Disposable = NoOpDisposable()
 
     private val fieldErrorSubject = PublishSubject.create<FormError>()
 
+    fun setShouldShowMessageSuccesForgotPassword() {
+        loginRepository.setShouldShowMessageSuccesForgotPassword(false)
+    }
+
+    fun getShouldShowMessageSuccesForgotPassword() : Boolean {
+        return loginRepository.showMessageSuccesForgotPassword()
+    }
+
     fun getLoginResult(): Observable<UiLoginResult> {
-        return resultSubject
+        return resultSignInSubject
     }
 
     private fun initFormHelper() {
@@ -51,8 +59,8 @@ internal constructor(
     }
 
     fun submitLoginInformation(user: String, password: String) {
-        disposable.dispose()
-        disposable = loginRepository.submitLoginInformation(user, password)
+        signInDisposable.dispose()
+        signInDisposable = loginRepository.submitLoginInformation(user, password)
             .map(uiMapper::toUiSignInResult)
             .doOnError { error ->
                 Timber.w(
@@ -60,7 +68,7 @@ internal constructor(
                     error.message
                 )
             }
-            .subscribe(resultSubject::onNext)
+            .subscribe(resultSignInSubject::onNext)
     }
 
     override fun formError(error: FormError) {

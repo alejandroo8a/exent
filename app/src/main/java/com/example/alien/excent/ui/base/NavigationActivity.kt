@@ -18,6 +18,7 @@ import com.example.alien.excent.ui.event.core.EventCoreFragment
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
+import com.example.alien.excent.ui.login.signin.passwordforgot.ForgotPasswordOverlayActivity
 import com.example.alien.excent.ui.navigation.Navigation
 import com.example.alien.excent.ui.navigation.UiAction
 import com.example.alien.excent.ui.settings.SettingsActivity
@@ -34,7 +35,6 @@ import javax.inject.Inject
 import com.example.alien.excent.ui.overlay.BaseOverlayActivity
 import com.example.alien.excent.ui.util.overlay.ScreenShotUtil
 import java.io.Serializable
-
 
 abstract class NavigationActivity: BaseActivity(), Navigation {
 
@@ -71,6 +71,10 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
                 launchActivity(ChangePasswordOverlayActivity::class.java)
             }
             UiAction.CORE -> launchActivityInClearTask(CoreActivity::class.java)
+            UiAction.FORGOT_PASSWORD -> {
+                prepareToLaunchOverlay()
+                launchActivity(ForgotPasswordOverlayActivity::class.java)
+            }
             UiAction.HOME -> {
                 verifyActivity(CoreActivity::class.java)
                 launchFragment(HomeFragment())

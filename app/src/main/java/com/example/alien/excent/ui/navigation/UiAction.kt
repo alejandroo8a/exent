@@ -6,6 +6,7 @@ enum class UiAction {
     CORE,
     EVENT,
     EVENT_CORE,
+    FORGOT_PASSWORD,
     HOME,
     LOGIN,
     PAYMENT_METHOD,

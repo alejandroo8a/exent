@@ -10,7 +10,6 @@ import com.example.alien.excent.ui.network.LoadingDialogFragment
 import com.example.alien.excent.ui.overlay.BaseOverlayActivity
 import com.metova.slim.annotation.Layout
 
-
 @Layout(R.layout.activity_change_password)
 class ChangePasswordOverlayActivity : BaseOverlayActivity<ChangePasswordOverlayViewModel>() {
 
