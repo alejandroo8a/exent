@@ -35,6 +35,10 @@ internal constructor() {
         showSnackbar(view, message, longDurationSnackbar)
     }
 
+    fun showLongSnackbar(view: View, stringResourceId: Int) {
+        showSnackbar(view, stringResourceId, longDurationSnackbar)
+    }
+
     private fun showSnackbar(view: View?, stringResourceId: Int, duration: Int) {
         if (view == null) {
             Log.e("SNACKBAR", "showSnackbar(): view is null. No message shown")

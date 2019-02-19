@@ -48,7 +48,7 @@ class SignInFragment : ViewModelFragment<SignInViewModel>() {
 
     private fun handleShouldShowMessageSuccesForgotPassword(value : Boolean) {
         if(value) {
-            snackbarUtil.showSnackbar(view!!, R.string.verify_email)
+            snackbarUtil.showLongSnackbar(view!!, R.string.verify_email)
             viewModel()!!.setShouldShowMessageSuccesForgotPassword()
         }
     }

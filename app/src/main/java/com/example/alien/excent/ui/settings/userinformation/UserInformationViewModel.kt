@@ -21,4 +21,12 @@ internal constructor(
             userRepository.getUserName(),
             BiFunction { email, username -> mapper.toUiUserInformation(email, username) })
     }
+
+    fun setShouldShowMessageSuccesChangePassword() {
+        userRepository.setShouldShowMessageSuccesChangePassword(false)
+    }
+
+    fun showMessageSuccesChangePassword(): Boolean {
+        return userRepository.showMessageSuccesChangePassword()
+    }
 }

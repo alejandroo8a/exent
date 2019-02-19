@@ -6,13 +6,18 @@ import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.ui.base.ViewModelFragment
 import com.example.alien.excent.ui.navigation.Navigation
 import com.example.alien.excent.ui.navigation.UiAction
+import com.example.alien.excent.ui.util.SnackbarUtil
 import com.metova.slim.annotation.Callback
 import com.metova.slim.annotation.Layout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_user_information.*
+import javax.inject.Inject
 
 @Layout(R.layout.fragment_user_information)
 class UserInformationFragment : ViewModelFragment<UserInformationViewModel>() {
+
+    @Inject
+    lateinit var snackbarUtil: SnackbarUtil
 
     @Callback
     lateinit var navigation: Navigation
@@ -24,11 +29,10 @@ class UserInformationFragment : ViewModelFragment<UserInformationViewModel>() {
     override fun subscribeOnStart() {
         super.subscribeOnStart()
 
-        addSubscription(
-            viewModel()!!.getUserInfo()
+        addSubscription(viewModel()!!.getUserInfo()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::populateView)
-        )
+                .subscribe(this::populateView))
+        handleShouldShowMessageSuccesChangePassword(viewModel()!!.showMessageSuccesChangePassword())
     }
 
     private fun populateView(userInformation: UiUserInformation) {
@@ -36,6 +40,13 @@ class UserInformationFragment : ViewModelFragment<UserInformationViewModel>() {
         edt_email.setText(userInformation.email)
         edt_user.isEnabled = false
         edt_email.isEnabled = false
+    }
+
+    private fun handleShouldShowMessageSuccesChangePassword(value : Boolean) {
+        if(value) {
+            snackbarUtil.showLongSnackbar(view!!, R.string.change_password_successful)
+            viewModel()!!.setShouldShowMessageSuccesChangePassword()
+        }
     }
 
     @OnClick(R.id.btn_change_password)

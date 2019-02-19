@@ -8,6 +8,7 @@ import com.example.alien.excent.network.core.EventsDetailResponse
 import com.example.alien.excent.network.core.EventsResponse
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
+import com.example.alien.excent.network.user.ChangePasswordRequest
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -26,6 +27,10 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
 
     private val mediaTypeJson = MediaType.parse("application/json")
     private val emptyJsonResponse = ResponseBody.create(mediaTypeJson, "{}")
+
+    override fun changePassword(changePassword: ChangePasswordRequest): Completable {
+        return Completable.complete()
+    }
 
     override fun forgotPassword(email: String): Completable {
         return Completable.complete()

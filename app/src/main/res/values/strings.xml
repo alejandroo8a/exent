@@ -16,6 +16,7 @@
 
     <!-- CHANGE PASSWORD -->
     <string name="current_password">Constraseña actual</string>
+    <string name="change_password_successful">La contraseña fue cambiada exitosamente.</string>
 
     <!-- FORGOT PASSWORD -->
     <string name="current_email">Correo actual</string>
