@@ -28,5 +28,4 @@ internal constructor(private val mutablePreferences: MutablePreferences) : AuthP
         mutablePreferences.remove(AuthPreferences.Keys.USER_NAME)
         mutablePreferences.remove(AuthPreferences.Keys.EMAIL)
     }
-
 }

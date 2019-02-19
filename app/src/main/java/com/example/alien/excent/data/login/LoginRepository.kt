@@ -11,13 +11,11 @@ import com.example.alien.excent.preferences.auth.MutableAuthPreferences
 import dagger.Reusable
 import android.annotation.SuppressLint
 
-
-
 @Reusable
 class LoginRepository @Inject
 internal constructor(
-    private val authPreferences: MutableAuthPreferences, private val mutableAuthPreferences: MutableAuthPreferences,
-    private val client: LoginClient, private val mapperData: LoginDataMapper, private val subjectSupplier: SubjectSupplier
+    private val mutableAuthPreferences: MutableAuthPreferences, private val client: LoginClient,
+    private val mapperData: LoginDataMapper, private val subjectSupplier: SubjectSupplier
 ) {
 
     init {
@@ -35,7 +33,7 @@ internal constructor(
     }
 
     fun isSessionActive(): Boolean {
-        return authPreferences.getUserId() != 0L
+        return mutableAuthPreferences.getUserId() != 0L
     }
 
     fun submitLoginInformation(email: String, password: String): Single<SignInData> {
@@ -73,6 +71,6 @@ internal constructor(
     @SuppressLint("CheckResult")
     private fun observeSignOutState() {
         subjectSupplier.getSignOutSubject()
-            .subscribe { authPreferences.clearAuthInformation() }
+            .subscribe { mutableAuthPreferences.clearAuthInformation() }
     }
 }
