@@ -33,7 +33,7 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
 
     override fun submitSignIn(signInRequest: SignInRequest): Single<SignInResponse> {
         return when (signInRequest.user) {
-            "alex.jym13@gmail.com" -> readFileForSingle("cannedData/SignInResponse.json", SignInResponse::class.java)
+            "test@test.com" -> readFileForSingle("cannedData/SignInResponse.json", SignInResponse::class.java)
             "unauthorized" -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
             "forbidden" -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
             "notFound" -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))

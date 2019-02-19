@@ -23,7 +23,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_register.*
 import javax.inject.Inject
 
-
 @Layout(R.layout.fragment_register)
 class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
 
@@ -88,6 +87,11 @@ class RegisterFragment : ViewModelFragment<RegisterViewModel>() {
                 edt_password.text.toString()
             )
         }
+    }
+
+    @OnClick(R.id.im_back)
+    fun goBack() {
+        navigation.navigateBack()
     }
 
     @OnEditorAction(R.id.edt_password_confirm)

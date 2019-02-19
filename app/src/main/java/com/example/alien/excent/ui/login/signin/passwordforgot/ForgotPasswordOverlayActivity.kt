@@ -3,19 +3,24 @@ package com.example.alien.excent.ui.login.signin.passwordforgot
 import android.support.annotation.VisibleForTesting
 import android.support.constraint.ConstraintLayout
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.OnClick
+import butterknife.OnEditorAction
 import com.example.alien.excent.R
 import com.example.alien.excent.data.NetworkResult
 import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.ui.network.LoadingDialogFragment
 import com.example.alien.excent.ui.overlay.BaseOverlayActivity
+import com.example.alien.excent.ui.util.Keyboard
 import com.example.alien.excent.ui.util.forms.FormError
 import com.example.alien.excent.ui.util.forms.FormField
 import com.example.alien.excent.ui.util.forms.FormInput
 import com.metova.slim.annotation.Layout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_forgot_password_overlay.*
+import org.jetbrains.anko.act
 
 @Layout(R.layout.activity_forgot_password_overlay)
 class ForgotPasswordOverlayActivity : BaseOverlayActivity<ForgotPasswordOverlayViewModel>() {
@@ -72,6 +77,17 @@ class ForgotPasswordOverlayActivity : BaseOverlayActivity<ForgotPasswordOverlayV
     @OnClick(R.id.im_close)
     fun goBack() {
         navigateBack()
+    }
+
+    @OnEditorAction(R.id.edt_email)
+    fun onKeyboardAction(textView: TextView, actionId: Int): Boolean {
+        return if (actionId == EditorInfo.IME_ACTION_DONE) {
+            Keyboard.close(act, rootView)
+            forgotPassword()
+            true
+        } else {
+            false
+        }
     }
 
     public override fun onStop() {
