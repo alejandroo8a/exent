@@ -30,7 +30,7 @@ local.properties
 .idea/gradle.xml
 .idea/runConfigurations.xml
 .idea/sonarlint/
-
+.idea/vcs.xml
 *.iml
 
 # OS-specific files

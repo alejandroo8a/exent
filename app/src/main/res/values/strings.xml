@@ -11,6 +11,9 @@
     <string name="delete_food">Lanzar alimentos y bebidas</string>
     <string name="delete_settings">Lanzar configuración de cuenta</string>
 
+    <!-- CHANGE PASSWORD -->
+    <string name="current_password">Constraseña actual</string>
+
     <!-- LOGIN -->
     <string name="connection_error">Error al realizar la conexión</string>
     <string name="generic_request_error">Ah sucedido un error inesperado</string>
@@ -40,7 +43,7 @@
     <string name="home_concert">Conciertos</string>
     <string name="home_fests">Festivales</string>
 
-    <!-- Settings -->
+    <!-- SETTINGS -->
     <string name="settings_title">Configuración de cuenta</string>
     <string name="settings_method_pay">Métodos de pago</string>
     <string name="settings_user_information">Información de usuario</string>
@@ -49,7 +52,7 @@
     <string name="settings_social_network_instagram">Instragram</string>
     <string name="settings_log_out">Salir</string>
 
-    <!-- Settings payment method-->
+    <!-- SETTINGS PAYMENT METHOD-->
     <string name="settings_no_payment_method">No hay métodos de pago activos.</string>
     <string name="settings_card">Tarjeta</string>
     <string name="settings_paypal">PayPal</string>

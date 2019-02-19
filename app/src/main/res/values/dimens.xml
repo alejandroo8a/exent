@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="logo_width">150dp</dimen>
+    <dimen name="logo_height">50dp</dimen>
+
+    <!-- CHANGE PASSWORD -->
+    <dimen name="change_password_card_view_height">420dp</dimen>
+    <dimen name="change_password_card_view_margin">8dp</dimen>
+    <dimen name="change_password_card_view_elevation">8dp</dimen>
+    <dimen name="change_password_card_view_corner_radius">8dp</dimen>
+    <dimen name="change_password_image_close_margin">8dp</dimen>
+    <dimen name="change_password_logo_margin">8dp</dimen>
+    <dimen name="change_password_edt_password_margin_width">8dp</dimen>
+    <dimen name="change_password_edt_password_margin_top">16dp</dimen>
+    <dimen name="change_password_edt_password_padding_width">30dp</dimen>
+    <dimen name="change_password_image_password_width">20dp</dimen>
+    <dimen name="change_password_image_password_height">20dp</dimen>
+    <dimen name="change_password_image_password_margin_width">4dp</dimen>
+
+</resources>
