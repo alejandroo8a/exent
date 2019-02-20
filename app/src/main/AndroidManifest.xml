@@ -28,7 +28,9 @@
             android:name=".ui.core.CoreActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".ui.settings.SettingsActivity" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.typeevents.TypeEventsActivity" />
         <activity android:name=".ui.settings.userinformation.changepassword.ChangePasswordOverlayActivity" />
         <activity android:name=".ui.event.EventActivity" />

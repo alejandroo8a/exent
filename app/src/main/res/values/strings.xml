@@ -65,8 +65,13 @@
     <string name="settings_no_payment_method">No hay métodos de pago activos.</string>
     <string name="settings_card">Tarjeta</string>
     <string name="settings_paypal">PayPal</string>
+    <string name="settings_add_payment_method">Agregar metodos de pago</string>
     <string name="settings_card_number">Número de tarjeta</string>
+    <string name="settings_card_date">01/2028</string>
+    <string name="settings_card_cvc">CVC</string>
+    <string name="settings_card_name">Nombre del propietario</string>
     <string name="settings_change_password">Cambiar contraseña</string>
     <string name="settings_save">Guardar</string>
+    <string name="settings_question"><u>¿Cómo guardamos tus datos?</u></string>
 
 </resources>

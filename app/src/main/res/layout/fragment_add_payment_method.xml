@@ -17,9 +17,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/settings_method_pay" />
+            app:title="@string/settings_add_payment_method" />
 
-        <Button
+        <!--<Button
             android:id="@+id/btn_card"
             android:layout_width="0dp"
             android:layout_height="35dp"
@@ -48,9 +48,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btn_card"
             app:layout_constraintTop_toBottomOf="@+id/header" />
-
+            -->
         <EditText
-            android:id="@+id/txt_card"
+            android:id="@+id/edt_name_owner"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -59,12 +59,115 @@
             android:background="@drawable/border_searchbar_home"
             android:ems="10"
             android:inputType="textPersonName"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:hint="@string/settings_card_name"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+        <EditText
+            android:id="@+id/edt_card"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border_searchbar_home"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:digits="-1234567890"
+            android:maxLines="1"
+            android:maxLength="20"
             android:hint="@string/settings_card_number"
             android:paddingStart="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_card" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_name_owner" />
 
+        <android.support.constraint.Guideline
+            android:id="@+id/center_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
+        <EditText
+            android:id="@+id/edt_date"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/border_searchbar_home"
+            android:ems="10"
+            android:inputType="number"
+            android:digits="/1234567890"
+            android:maxLines="1"
+            android:maxLength="7"
+            android:imeOptions="actionNext"
+            android:hint="@string/settings_card_date"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="@id/center_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_card" />
+
+        <EditText
+            android:id="@+id/edt_cvc"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border_searchbar_home"
+            android:ems="10"
+            android:inputType="number"
+            android:digits="1234567890"
+            android:maxLines="1"
+            android:maxLength="3"
+            android:hint="@string/settings_card_cvc"
+            android:imeOptions="actionDone"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/center_line"
+            app:layout_constraintTop_toBottomOf="@+id/edt_card" />
+
+        <ImageView
+            android:id="@+id/im_cvc"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_cvc"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_cvc"
+            app:layout_constraintEnd_toEndOf="@+id/edt_cvc"
+            app:layout_constraintTop_toTopOf="@+id/edt_cvc" />
+
+        <Button
+            android:id="@+id/btn_save_credit_card"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/btn_login"
+            android:text="Guardar"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/settings_question"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_date" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
