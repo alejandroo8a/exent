@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Environment
 import com.example.alien.excent.ModelsApiClient.RegisterRequest
 import com.example.alien.excent.ModelsApiClient.RegisterResponse
-import com.example.alien.excent.network.core.EventsDetailResponse
 import com.example.alien.excent.network.core.EventsResponse
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
@@ -58,13 +57,14 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
         }
     }
 
-    override fun getEvents(idUser: Int, idLocation: Int, idCategory: Int): Single<EventsResponse> {
-        return when (idUser) {
-            1 -> readFileForSingle("cannedData/EventsResponse.json", EventsResponse::class.java )
-            2 -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
-            3 -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
-            4 -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
-            5 -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
+    override fun getEvents(idLocation: Int, idCategory: Int): Single<EventsResponse> {
+        return when (idCategory) {
+            1 -> readFileForSingle("cannedData/EventsNextResponse.json", EventsResponse::class.java )
+            2 -> readFileForSingle("cannedData/EventsConcertsResponse.json", EventsResponse::class.java )
+            3 -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
+            4 -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
+            5 -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
+            6 -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
             else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
         }
     }

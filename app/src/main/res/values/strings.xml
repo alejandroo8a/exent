@@ -51,6 +51,8 @@
     <string name="home_sports">Deportes</string>
     <string name="home_concert">Conciertos</string>
     <string name="home_fests">Festivales</string>
+    <string name="home_others">Otros</string>
+    <string name="home_no_events">Sin eventos disponibles</string>
 
     <!-- SETTINGS -->
     <string name="settings_title">Configuración de cuenta</string>

@@ -21,9 +21,8 @@ interface NetworkApi {
     @POST("login/forgot_password")
     fun forgotPassword(@Body email: String): Completable
 
-    @GET("events/{idUser}/{idLocation}/{idCategory}")
-    fun getEvents(@Path("idUser") idUser: Int,
-                  @Path("idLocation") idLocation: Int,
+    @GET("events/{idLocation}/{idCategory}")
+    fun getEvents(@Path("idLocation") idLocation: Int,
                   @Path("idCategory") idCategory: Int) : Single<EventsResponse>
 
     @POST("login/signin")

@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.*
-import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import butterknife.BindView
 import com.example.alien.excent.R
+import com.example.alien.excent.data.ResultData
 import com.example.alien.excent.module.ApplicationComponentHolder
 import com.example.alien.excent.ui.base.ViewModelFragment
 import com.example.alien.excent.ui.navigation.Navigation
@@ -21,6 +21,7 @@ import com.metova.slim.annotation.Layout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
+import com.example.alien.excent.data.NetworkResult
 
 
 @Layout(R.layout.fragment_home)
@@ -31,6 +32,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
 
     @BindView(R.id.toolbar_home) lateinit var toolbarHome: Toolbar
     @BindView(R.id.rv_events) lateinit var rvEvents: RecyclerView
+    lateinit var  type: EventType
 
     @Callback
     lateinit var  navigation: Navigation
@@ -57,10 +59,39 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     override fun subscribeOnStart() {
         super.subscribeOnStart()
 
-
         addSubscription(viewModel()?.eventContentUpdates()!!
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(adapter::populateEvents))
+            .subscribe(this::handleEvents))
+    }
+
+    private fun handleEvents(result: ResultData<List<UiEvents>>) {
+        when (result.networkResult) {
+            NetworkResult.SUCCESS -> {
+                if (result.data!!.isEmpty()) {
+                    txt_no_info.visibility = View.VISIBLE
+                    rvEvents.visibility = View.GONE
+                } else {
+                    txt_no_info.visibility = View.GONE
+                    rvEvents.visibility = View.VISIBLE
+                    adapter.populateEvents(result.data)
+                }
+            }
+            NetworkResult.CONNECTION_ERROR -> {
+                txt_no_info.visibility = View.GONE
+                rvEvents.visibility = View.GONE
+                snackbarUtil.showSnackbar(view!!, R.string.connection_error)
+            }
+            NetworkResult.AUTHORIZATION_ERROR, NetworkResult.FORBIDDEN_ERROR -> {
+                txt_no_info.visibility = View.GONE
+                rvEvents.visibility = View.GONE
+                snackbarUtil.showSnackbar(view!!, R.string.forbidden)
+            }
+            else -> {
+                txt_no_info.visibility = View.GONE
+                rvEvents.visibility = View.GONE
+                snackbarUtil.showSnackbar(view!!, R.string.generic_request_error)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -90,6 +121,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
         tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_sports)).setTag(EventType.SPORTS))
         tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_concert)).setTag(EventType.CONCERTS))
         tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_fests)).setTag(EventType.FESTIVAL))
+        tl_home.addTab(tl_home.newTab().setText(getString(R.string.home_others)).setTag(EventType.OTHERS))
     }
 
     private fun configureAdapter() {
@@ -110,7 +142,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     }
 
     override fun onTabSelected(tab: TabLayout.Tab) {
-        val  type: EventType = tab.tag as EventType
+        this.type = tab.tag as EventType
         viewModel()?.updateEventsContent(type)
     }
 

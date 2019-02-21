@@ -1,5 +1,6 @@
 package com.example.alien.excent.network.core
 
+import com.example.alien.excent.data.ResultData
 import com.example.alien.excent.data.core.home.EventsData
 import com.example.alien.excent.network.NetworkApi
 import com.example.alien.excent.network.core.home.HomeNetworkMapper
@@ -12,8 +13,8 @@ internal constructor(
     private val networkMapper: HomeNetworkMapper
 ) {
 
-    fun getEvents(idUser: Int, idLocation: Int, idCategory: Int) : Single<List<EventsData>> {
-        return api.getEvents(1, idLocation, idCategory)
+    fun getEvents(idLocation: Int, idCategory: Int) : Single<ResultData<List<EventsData>>> {
+        return api.getEvents(idLocation, idCategory)
             .map(networkMapper::toEventsData)
             .onErrorReturn(networkMapper::toEventsData)
     }

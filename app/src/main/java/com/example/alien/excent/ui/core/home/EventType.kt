@@ -4,5 +4,6 @@ enum class EventType {
     NEXT,
     SPORTS,
     CONCERTS,
-    FESTIVAL
+    FESTIVAL,
+    OTHERS
 }

@@ -12,5 +12,7 @@ data class EventsData(
     var price: Float = 0.0f,
     var result: NetworkResult = NetworkResult.SUCCESS
 ) {
-    constructor(result: NetworkResult) : this()
+    constructor(result: NetworkResult) : this() {
+        this.result = result
+    }
 }

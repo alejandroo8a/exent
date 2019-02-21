@@ -1,11 +1,13 @@
 package com.example.alien.excent.ui.core.home
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.alien.excent.R
 import kotlinx.android.synthetic.main.item_home.view.*
 
@@ -34,7 +36,7 @@ class AdapterEvents(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(event: UiEvents, listener: (UiEvents) -> Unit) = with(itemView) {
-            Glide.with(context).load(event.image).into(this.im_background)
+            Glide.with(context).load(event.image).apply(RequestOptions().error(ContextCompat.getDrawable(context, R.drawable.ic_broken_image))).into(im_background)
             txt_title.text = event.title
             txt_date.text = event.date
             txt_time.text = event.time
