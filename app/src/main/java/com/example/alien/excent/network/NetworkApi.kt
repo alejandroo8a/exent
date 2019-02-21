@@ -25,6 +25,10 @@ interface NetworkApi {
     fun getEvents(@Path("idLocation") idLocation: Int,
                   @Path("idCategory") idCategory: Int) : Single<EventsResponse>
 
+    @GET("events/search/{idLocation}/{event}")
+    fun searchEvents(@Path("idLocation") idLocation: Int,
+                     @Path("event") event: String) : Single<EventsResponse>
+
     @POST("login/signin")
     fun submitSignIn(@Body signInRequest: SignInRequest): Single<SignInResponse>
 

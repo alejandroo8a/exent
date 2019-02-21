@@ -21,6 +21,7 @@ import timber.log.Timber
 
 import java.io.*
 import java.lang.reflect.Type
+import java.util.*
 
 class CannedNetworkApi(private val context: Context, private val moshi: Moshi): NetworkApi {
 
@@ -65,6 +66,18 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
             4 -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
             5 -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
             6 -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
+            else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
+        }
+    }
+
+    override fun searchEvents(idLocation: Int, event: String): Single<EventsResponse> {
+        return when (event) {
+            "pumas" -> readFileForSingle("cannedData/EventsConcertsResponse.json", EventsResponse::class.java )
+            "empty" -> Single.just(EventsResponse(Collections.emptyList()))
+            "unauthorized" -> Single.error(HttpException(Response.error<ResponseBody>(401, emptyJsonResponse)))
+            "forbidden" -> Single.error(HttpException(Response.error<ResponseBody>(403, emptyJsonResponse)))
+            "notFound" -> Single.error(HttpException(Response.error<ResponseBody>(404, emptyJsonResponse)))
+            "connection" -> Single.error(HttpException(Response.error<ResponseBody>(408, emptyJsonResponse)))
             else -> Single.error(HttpException(Response.error<ResponseBody>(500, emptyJsonResponse)))
         }
     }

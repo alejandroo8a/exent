@@ -9,6 +9,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import butterknife.BindView
+import butterknife.OnClick
 import com.example.alien.excent.R
 import com.example.alien.excent.data.ResultData
 import com.example.alien.excent.module.ApplicationComponentHolder
@@ -22,7 +23,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 import com.example.alien.excent.data.NetworkResult
-
+import com.example.alien.excent.ui.util.Keyboard
 
 @Layout(R.layout.fragment_home)
 class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelectedListener {
@@ -32,7 +33,6 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
 
     @BindView(R.id.toolbar_home) lateinit var toolbarHome: Toolbar
     @BindView(R.id.rv_events) lateinit var rvEvents: RecyclerView
-    lateinit var  type: EventType
 
     @Callback
     lateinit var  navigation: Navigation
@@ -59,12 +59,27 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     override fun subscribeOnStart() {
         super.subscribeOnStart()
 
+        prepareViewWhenSearchEvent()
         addSubscription(viewModel()?.eventContentUpdates()!!
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::handleEvents))
     }
 
+    @OnClick(R.id.im_search)
+    fun searchEvent() {
+        Keyboard.close(activity!!, view!!)
+        prepareViewWhenSearchEvent()
+        viewModel()?.searchEvents(edt_search.text.toString())
+    }
+
+    private fun prepareViewWhenSearchEvent() {
+        pb_home.visibility = View.VISIBLE
+        rvEvents.visibility = View.GONE
+        txt_no_info.visibility = View.GONE
+    }
+
     private fun handleEvents(result: ResultData<List<UiEvents>>) {
+        pb_home.visibility = View.GONE
         when (result.networkResult) {
             NetworkResult.SUCCESS -> {
                 if (result.data!!.isEmpty()) {
@@ -142,8 +157,8 @@ class HomeFragment : ViewModelFragment<HomeViewModel>(), TabLayout.OnTabSelected
     }
 
     override fun onTabSelected(tab: TabLayout.Tab) {
-        this.type = tab.tag as EventType
-        viewModel()?.updateEventsContent(type)
+        prepareViewWhenSearchEvent()
+        viewModel()?.updateEventsContent(tab.tag as EventType)
     }
 
     fun navigateToEventDetail(uiEvent : UiEvents){

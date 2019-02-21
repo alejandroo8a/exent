@@ -35,6 +35,12 @@ internal constructor(
             .subscribe(eventsSubject::onNext)
     }
 
+    fun searchEvents(event: String) {
+        eventsDisposable = coreRepository.searchEvents(0, event)
+            .map(uiHomeMapper::toUiEvent)
+            .subscribe(eventsSubject::onNext)
+    }
+
     override fun onCleared() {
         eventsDisposable.dispose()
     }

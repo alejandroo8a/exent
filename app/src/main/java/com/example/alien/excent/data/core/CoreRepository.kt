@@ -14,4 +14,8 @@ internal constructor(
     fun getEvents(idLocation: Int, idCategory: Int): Single<ResultData<List<EventsData>>> {
         return coreClient.getEvents(idLocation, idCategory)
     }
+
+    fun searchEvents(idLocation: Int, event: String): Single<ResultData<List<EventsData>>> {
+        return coreClient.searchEvents(idLocation, event)
+    }
 }
