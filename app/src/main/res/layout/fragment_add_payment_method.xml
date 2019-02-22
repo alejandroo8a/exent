@@ -17,7 +17,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/settings_add_payment_method" />
+            app:title="@string/settings_add_payment_method"
+            app:image="@drawable/ic_pay_method"/>
 
         <!--<Button
             android:id="@+id/btn_card"

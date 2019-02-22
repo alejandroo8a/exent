@@ -7,5 +7,6 @@
 
     <declare-styleable name="SettingsHeader">
         <attr name="title"/>
+        <attr name="image"/>
     </declare-styleable>
 </resources>

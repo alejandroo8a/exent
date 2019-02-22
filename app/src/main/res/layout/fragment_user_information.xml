@@ -12,7 +12,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/settings_user_information" />
+        app:title="@string/settings_user_information"
+        app:image="@drawable/ic_user_information" />
 
     <EditText
         android:id="@+id/edt_user"

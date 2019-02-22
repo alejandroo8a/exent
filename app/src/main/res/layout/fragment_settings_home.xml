@@ -16,7 +16,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/settings_title" />
+            app:title="@string/settings_title"
+            app:image="@drawable/ic_settings"/>
 
         <com.example.alien.excent.ui.settings.SettingsSections
             android:id="@+id/ss_payment_method"
