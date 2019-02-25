@@ -1,5 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -17,6 +18,160 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <android.support.constraint.Guideline
+            android:id="@+id/center_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/im_background"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            app:srcCompat="@color/blue_90" />
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/center_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/im_background" />
+
+        <TextView
+            android:id="@+id/txt_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/center_line"
+            app:layout_constraintTop_toBottomOf="@+id/im_background" />
+
+        <TextView
+            android:id="@+id/txt_description_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="8dp"
+            android:text="Detalle del evento"
+            android:textColor="@color/blue_90"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/center_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/im_background" />
+
+        <TextView
+            android:id="@+id/txt_description_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_description_title" />
+
+        <com.example.alien.excent.ui.event.EventItem
+        android:id="@+id/et_buy_ticket"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:image="@drawable/ic_ticket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_description_body"
+        app:title="@string/event_buy_ticket" />
+
+        <com.example.alien.excent.ui.event.EventItem
+            android:id="@+id/et_food"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:image="@drawable/ic_food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_description_body"
+            app:title="@string/event_food" />
+
+        <com.example.alien.excent.ui.event.EventItem
+            android:id="@+id/et_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:image="@drawable/ic_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintTop_toBottomOf="@+id/txt_description_body"
+            app:title="@string/event_register" />
+
+        <com.example.alien.excent.ui.event.EventItem
+            android:id="@+id/et_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:image="@drawable/ic_location_event"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintTop_toBottomOf="@+id/et_food"
+            app:title="@string/event_location" />
+
+        <com.example.alien.excent.ui.event.EventItem
+            android:id="@+id/et_news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:image="@drawable/ic_news"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_food"
+            app:title="@string/event_news" />
+
+        <com.example.alien.excent.ui.event.EventItem
+            android:id="@+id/et_comments"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:image="@drawable/ic_comments"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintTop_toBottomOf="@+id/et_food"
+            app:title="@string/event_comments" />
+
+        <ImageView
+            android:id="@+id/im_bottom_logo"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_news" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

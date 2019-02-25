@@ -12,7 +12,7 @@ internal constructor() {
         if(eventData.networkResult == NetworkResult.SUCCESS) {
             val uiEvents = ArrayList<UiEvents>()
             for(event in eventData.data!!) {
-                uiEvents.add(UiEvents(event.idEvent, event.name, event.date, event.time, event.place, event.price.toString(), event.image))
+                uiEvents.add(UiEvents(event.idEvent, event.description, event.name, event.date, event.time, event.place, event.price.toString(), event.image))
             }
             return ResultData(uiEvents)
         }

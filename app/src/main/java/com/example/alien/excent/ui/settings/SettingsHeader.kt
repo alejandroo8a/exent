@@ -16,7 +16,7 @@ class SettingsHeader : ConstraintLayout {
 
     @BindView(R.id.txt_title) lateinit var txtTitle : TextView
     @BindView(R.id.im_settings) lateinit var imSettings : ImageView
-    private lateinit var title : String
+    private var title : String? = null
     private var drawable : Drawable? = null
     private lateinit var innerContext : Context
 
@@ -38,7 +38,9 @@ class SettingsHeader : ConstraintLayout {
         this.innerContext = context
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.SettingsHeader)
         try {
-            title = styledAttributes.getString(R.styleable.SettingsHeader_title)
+            if(styledAttributes.getString(R.styleable.SettingsHeader_title) != null) {
+                title = styledAttributes.getString(R.styleable.SettingsHeader_title)
+            }
             if(styledAttributes.getDrawable(R.styleable.SettingsHeader_image) != null) {
                 drawable = styledAttributes.getDrawable(R.styleable.SettingsHeader_image)
             }
@@ -51,8 +53,9 @@ class SettingsHeader : ConstraintLayout {
     override fun onFinishInflate() {
         super.onFinishInflate()
         ButterKnife.bind(this)
-
-        txtTitle.text = this.title
+        if(this.title != null) {
+            txtTitle.text = this.title
+        }
         if(this.drawable != null) {
             Glide.with(this.innerContext).load(this.drawable).into(imSettings)
         }

@@ -4,6 +4,7 @@ import com.example.alien.excent.data.NetworkResult
 
 data class EventsData(
     var idEvent: Int = 0,
+    var description: String = "",
     var name: String = "",
     var date: String = "",
     var time: String = "",

@@ -12,7 +12,7 @@ internal constructor(){
     fun toEventsData(detailResponse: EventsResponse) : ResultData<List<EventsData>> {
         val eventsData = ArrayList<EventsData>()
         for(event in detailResponse.events) {
-            eventsData.add(EventsData(event.idEvent, event.name, event.date, event.time, event.place, event.image, event.price))
+            eventsData.add(EventsData(event.idEvent, event.description, event.name, event.date, event.time, event.place, event.image, event.price))
         }
         return ResultData(eventsData)
     }

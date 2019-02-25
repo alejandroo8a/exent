@@ -2,6 +2,7 @@ package com.example.alien.excent.network.core
 
 data class EventsDetailResponse(
     val idEvent: Int,
+    val description: String,
     val name: String,
     val date: String,
     val time: String,

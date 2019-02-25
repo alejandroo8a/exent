@@ -76,4 +76,12 @@
     <string name="settings_save">Guardar</string>
     <string name="settings_question"><u>¿Cómo guardamos tus datos?</u></string>
 
+    <!-- Event core -->
+    <string name="event_buy_ticket">Comprar boleto</string>
+    <string name="event_food">Alimentos y bebidas</string>
+    <string name="event_register">Registrarme en el evento</string>
+    <string name="event_location">Ubicación</string>
+    <string name="event_news">Noticias del evento</string>
+    <string name="event_comments">Comentarios o sugerencias</string>
+
 </resources>

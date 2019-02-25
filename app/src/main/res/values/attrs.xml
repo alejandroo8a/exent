@@ -9,4 +9,9 @@
         <attr name="title"/>
         <attr name="image"/>
     </declare-styleable>
+
+    <declare-styleable name="EventItem">
+        <attr name="title"/>
+        <attr name="image"/>
+    </declare-styleable>
 </resources>

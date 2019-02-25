@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class UiEvents(
     val idEvent: Int,
+    val description: String,
     val title: String,
     val date: String,
     val time: String,
