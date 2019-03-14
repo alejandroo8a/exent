@@ -5,6 +5,7 @@ import android.os.Environment
 import com.example.alien.excent.ModelsApiClient.RegisterRequest
 import com.example.alien.excent.ModelsApiClient.RegisterResponse
 import com.example.alien.excent.network.core.EventsResponse
+import com.example.alien.excent.network.event.EventSeatsRequest
 import com.example.alien.excent.network.login.signin.SignInRequest
 import com.example.alien.excent.network.login.signin.SignInResponse
 import com.example.alien.excent.network.user.ChangePasswordRequest
@@ -33,6 +34,10 @@ class CannedNetworkApi(private val context: Context, private val moshi: Moshi): 
     }
 
     override fun forgotPassword(email: String): Completable {
+        return Completable.complete()
+    }
+
+    override fun submitSeats(eventSeatsRequest: EventSeatsRequest): Completable {
         return Completable.complete()
     }
 

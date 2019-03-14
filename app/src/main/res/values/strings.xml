@@ -10,6 +10,11 @@
     <string name="delete_re_sell">Lanzar reventa</string>
     <string name="delete_food">Lanzar alimentos y bebidas</string>
     <string name="delete_settings">Lanzar configuración de cuenta</string>
+    <string name="delete_tickets">Lanzar compra de ticket</string>
+    <string name="delete_news">Lanzar noticias</string>
+    <string name="delete_comments">Lanzar comentarios</string>
+    <string name="delete_location">Lanzar localizacion</string>
+    <string name="delete_register_seat">Lanzar registro de asiento</string>
 
     <!-- GENERAL -->
     <string name="send">Enviar</string>
@@ -83,5 +88,11 @@
     <string name="event_location">Ubicación</string>
     <string name="event_news">Noticias del evento</string>
     <string name="event_comments">Comentarios o sugerencias</string>
+
+    <!-- Event add seat -->
+    <string name="event_add_seat_detail">Introduce la cantidad y números de tus asientos para disfrutar de nuestros servicios.</string>
+    <string name="event_amount_seats">Cantidad de asientos</string>
+    <string name="event_continue">Continuar</string>
+    <string name="event_seats_success">Asientos agregados</string>
 
 </resources>

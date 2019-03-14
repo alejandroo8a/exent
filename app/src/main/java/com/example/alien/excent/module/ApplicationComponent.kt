@@ -4,6 +4,7 @@ import com.example.alien.excent.ui.core.CoreActivity
 import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.event.EventActivity
 import com.example.alien.excent.ui.event.core.EventCoreFragment
+import com.example.alien.excent.ui.event.core.registerseat.RegisterSeatOverlayActivity
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
@@ -48,6 +49,8 @@ interface ApplicationComponent {
     fun inject(payMethodsFragment: PayMethodsFragment)
 
     fun inject(registerFragment: RegisterFragment)
+
+    fun inject(registerSeatOverlayActivity: RegisterSeatOverlayActivity)
 
     fun inject(signInFragment: SignInFragment)
 

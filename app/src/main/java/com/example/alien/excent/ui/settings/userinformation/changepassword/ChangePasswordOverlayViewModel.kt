@@ -8,7 +8,6 @@ import com.example.alien.excent.ui.util.NoOpDisposable
 import com.example.alien.excent.ui.util.forms.*
 import com.example.alien.excent.ui.util.overlay.ScreenShotUtil
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
 import timber.log.Timber

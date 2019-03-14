@@ -15,6 +15,7 @@ import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.core.home.UiEvents
 import com.example.alien.excent.ui.event.EventActivity
 import com.example.alien.excent.ui.event.core.EventCoreFragment
+import com.example.alien.excent.ui.event.core.registerseat.RegisterSeatOverlayActivity
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
 import com.example.alien.excent.ui.login.signin.SignInFragment
@@ -124,6 +125,14 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
             UiAction.EVENT_CORE -> {
                 if (argument is UiEvents) {
                     launchFragment(EventCoreFragment.newInstance(argument as UiEvents))
+                } else {
+                    throw IllegalArgumentException()
+                }
+            }
+            UiAction.REGISTER_SEAT -> {
+                if(argument is Int) {
+                    prepareToLaunchOverlay()
+                    launchActivityWithArguments(RegisterSeatOverlayActivity::class.java, argument, nameArgument)
                 } else {
                     throw IllegalArgumentException()
                 }
