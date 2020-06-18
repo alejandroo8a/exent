@@ -12,10 +12,12 @@ import com.example.alien.excent.ui.base.ViewModelFragment
 import com.example.alien.excent.ui.core.home.UiEvents
 import com.example.alien.excent.ui.navigation.Navigation
 import com.example.alien.excent.ui.navigation.UiAction
+import com.example.alien.excent.ui.util.ThirdPartyIntentLauncher
 import com.metova.slim.annotation.Callback
 import com.metova.slim.annotation.Layout
 import kotlinx.android.synthetic.main.fragment_event_core.*
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 @Layout(R.layout.fragment_event_core)
 class EventCoreFragment : ViewModelFragment<EventCoreViewModel>() {
@@ -37,6 +39,9 @@ class EventCoreFragment : ViewModelFragment<EventCoreViewModel>() {
     @Callback
     lateinit var  navigation: Navigation
     var uiEvent: UiEvents? = null
+
+    @Inject
+    lateinit var thirdPartyIntentLauncher: ThirdPartyIntentLauncher
 
     override fun viewModelClass() = EventCoreViewModel::class.java
 
@@ -66,12 +71,12 @@ class EventCoreFragment : ViewModelFragment<EventCoreViewModel>() {
 
     @OnClick(R.id.et_buy_ticket)
     fun goToBuyTicket() {
-        activity?.toast(R.string.delete_tickets)
+        navigation.navigateToAction(UiAction.BUY_TICKET, uiEvent, event)
     }
 
     @OnClick(R.id.et_food)
     fun goToFood() {
-        activity?.toast(R.string.event_food)
+        navigation.navigateToAction(UiAction.BUY_FOOD, uiEvent, event)
     }
 
     @OnClick(R.id.et_register)
@@ -81,17 +86,21 @@ class EventCoreFragment : ViewModelFragment<EventCoreViewModel>() {
 
     @OnClick(R.id.et_location)
     fun goToLocation() {
-        activity?.toast(R.string.delete_location)
+        uiEvent?.let { innerUiEvent ->
+            view?.let { innerView ->
+                thirdPartyIntentLauncher.launchMap(innerUiEvent.location, innerView)
+            }
+        }
     }
 
     @OnClick(R.id.et_news)
     fun goToNews() {
-        activity?.toast(R.string.delete_news)
+        navigation.navigateToAction(UiAction.NEWS, uiEvent, event)
     }
 
     @OnClick(R.id.et_comments)
     fun goToComments() {
-        activity?.toast(R.string.delete_comments)
+        navigation.navigateToAction(UiAction.COMMENTS, uiEvent, event)
     }
 
     @OnClick(R.id.im_back)

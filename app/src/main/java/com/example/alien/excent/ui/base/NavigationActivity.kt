@@ -15,6 +15,9 @@ import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.core.home.UiEvents
 import com.example.alien.excent.ui.event.EventActivity
 import com.example.alien.excent.ui.event.core.EventCoreFragment
+import com.example.alien.excent.ui.event.core.buyticket.BuyTicketFragment
+import com.example.alien.excent.ui.event.core.comments.CommentsEventFragment
+import com.example.alien.excent.ui.event.core.news.NewsFragment
 import com.example.alien.excent.ui.event.core.registerseat.RegisterSeatOverlayActivity
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
@@ -115,6 +118,22 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
 
     override fun <T> navigateToAction(action: UiAction, argument: T, nameArgument: String) {
         when (action) {
+            UiAction.BUY_TICKET -> {
+                if (argument is UiEvents) {
+                    verifyActivity(EventActivity::class.java)
+                    launchFragment(BuyTicketFragment.newInstance(argument as UiEvents))
+                } else {
+                    throw IllegalArgumentException()
+                }
+            }
+            UiAction.COMMENTS -> {
+                if (argument is UiEvents) {
+                    verifyActivity(EventActivity::class.java)
+                    launchFragment(CommentsEventFragment.newInstance(argument as UiEvents))
+                } else {
+                    throw IllegalArgumentException()
+                }
+            }
             UiAction.EVENT -> {
                 if (argument is UiEvents) {
                     launchActivityWithArguments(EventActivity::class.java, argument, nameArgument)
@@ -125,6 +144,14 @@ abstract class NavigationActivity: BaseActivity(), Navigation {
             UiAction.EVENT_CORE -> {
                 if (argument is UiEvents) {
                     launchFragment(EventCoreFragment.newInstance(argument as UiEvents))
+                } else {
+                    throw IllegalArgumentException()
+                }
+            }
+            UiAction.NEWS -> {
+                if (argument is UiEvents) {
+                    verifyActivity(EventActivity::class.java)
+                    launchFragment(NewsFragment.newInstance(argument as UiEvents))
                 } else {
                     throw IllegalArgumentException()
                 }

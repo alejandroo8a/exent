@@ -4,6 +4,9 @@ import com.example.alien.excent.ui.core.CoreActivity
 import com.example.alien.excent.ui.core.home.HomeFragment
 import com.example.alien.excent.ui.event.EventActivity
 import com.example.alien.excent.ui.event.core.EventCoreFragment
+import com.example.alien.excent.ui.event.core.buyticket.BuyTicketFragment
+import com.example.alien.excent.ui.event.core.comments.CommentsEventFragment
+import com.example.alien.excent.ui.event.core.news.NewsFragment
 import com.example.alien.excent.ui.event.core.registerseat.RegisterSeatOverlayActivity
 import com.example.alien.excent.ui.login.LoginActivity
 import com.example.alien.excent.ui.login.register.RegisterFragment
@@ -30,21 +33,27 @@ interface ApplicationComponent {
 
     fun inject(addPaymentMethodFragment: AddPaymentMethodFragment)
 
+    fun inject(buyTicketFragment: BuyTicketFragment)
+
     fun inject(changePasswordOverlayActivity: ChangePasswordOverlayActivity)
 
-    fun inject(forgotPasswordOverlayActivity: ForgotPasswordOverlayActivity)
-
     fun inject(coreActivity: CoreActivity)
+
+    fun inject(commentsEventFragment: CommentsEventFragment)
 
     fun inject(eventActivity: EventActivity)
 
     fun inject(eventCoreFragment: EventCoreFragment)
+
+    fun inject(forgotPasswordOverlayActivity: ForgotPasswordOverlayActivity)
 
     fun inject(homeFragment: HomeFragment)
 
     fun inject(loadingDialogFragment: LoadingDialogFragment)
 
     fun inject(loginActivity: LoginActivity)
+
+    fun inject(newsFragment: NewsFragment)
 
     fun inject(payMethodsFragment: PayMethodsFragment)
 
